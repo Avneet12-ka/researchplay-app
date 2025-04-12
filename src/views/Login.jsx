@@ -1,20 +1,45 @@
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { Container, Typography, Paper, Box, TextField, Button, FormControl, InputLabel, Select, MenuItem, Link } from '@mui/material';
+import { useNavigate, Link as RouterLink } from 'react-router-dom';
+import { Container, Typography, Paper, Box, TextField, Button, Alert, Link } from '@mui/material';
+import { supabase } from '../supabaseClient';
 import { login } from '../store/authSlice';
 
 export default function Login() {
-  const [credentials, setCredentials] = useState({ email: '', password: '', role: 'student' });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState({ type: '', content: '' });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // In a real app, you'd validate and make an API call here
-    dispatch(login({ name: credentials.email.split('@')[0], email: credentials.email }));
-    navigate('/');
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    setMessage({ type: '', content: '' });
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) throw error;
+
+      if (data.session && data.user) {
+        dispatch(login({ 
+          id: data.user.id, 
+          email: data.user.email,
+        }));
+        setMessage({ type: 'success', content: 'Login successful!' });
+        navigate('/');
+      }
+    } catch (error) {
+      setMessage({ type: 'error', content: `Login failed: ${error.message}` });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -23,46 +48,43 @@ export default function Login() {
         Login
       </Typography>
       <Paper sx={{ p: 4 }}>
-        <form onSubmit={handleSubmit}>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <TextField
-              label="Email"
-              type="email"
-              value={credentials.email}
-              onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
-              required
-            />
-            <TextField
-              label="Password"
-              type="password"
-              value={credentials.password}
-              onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-              required
-            />
-            <FormControl fullWidth>
-              <InputLabel>Role</InputLabel>
-              <Select
-                value={credentials.role}
-                label="Role"
-                onChange={(e) => setCredentials({ ...credentials, role: e.target.value })}
-              >
-                <MenuItem value="student">Student</MenuItem>
-                <MenuItem value="staff">Staff</MenuItem>
-              </Select>
-            </FormControl>
-            <Button 
-              type="submit"
-              variant="contained"
-              color="primary"
-              size="large"
-            >
-              Login
-            </Button>
-            <Typography variant="body2" align="center" sx={{ mt: 2 }}>
-              Don't have an account? <Link href="https://replit.com/signup" target="_blank">Sign up</Link>
-            </Typography>
-          </Box>
-        </form>
+        <Box component="form" onSubmit={handleLogin} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <TextField
+            label="Email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            fullWidth
+          />
+          <TextField
+            label="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            fullWidth
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            disabled={loading}
+            size="large"
+          >
+            {loading ? 'Logging in...' : 'Login'}
+          </Button>
+          {message.content && (
+            <Alert severity={message.type}>
+              {message.content}
+            </Alert>
+          )}
+          <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+            Don't have an account?{' '}
+            <Link component={RouterLink} to="/signup">
+              Sign up
+            </Link>
+          </Typography>
+        </Box>
       </Paper>
     </Container>
   );
