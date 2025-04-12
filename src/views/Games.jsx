@@ -21,9 +21,25 @@ export default function Games() {
     setSelectedGame(game);
     dispatch(setCurrentGame(game));
     // Simulate scoring
-    setTimeout(() => {
-      dispatch(updateScore(Math.floor(Math.random() * 100)));
-    }, 1000);
+    try {
+      // Create game session in Supabase
+      const { data: gameSession, error } = await supabase
+        .from('game_sessions')
+        .insert([{
+          paper_id: game.paperId,
+          user_id: auth.user?.id,
+          started_at: new Date().toISOString()
+        }])
+        .select();
+
+      if (error) throw error;
+
+      // Update score in Redux
+      dispatch(updateScore(0)); // Reset score for new game
+      navigate(`/game/${gameSession[0].id}`);
+    } catch (err) {
+      console.error('Error starting game:', err);
+    }
   };
 
   const papers = useSelector(state => state.papers.papers);

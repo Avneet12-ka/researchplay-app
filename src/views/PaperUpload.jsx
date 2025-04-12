@@ -28,13 +28,16 @@ export default function PaperUpload() {
         size: file.size
       };
 
-      // Store in localStorage
-      const papers = JSON.parse(localStorage.getItem('papers') || '[]');
-      papers.push(paper);
-      localStorage.setItem('papers', JSON.stringify(papers));
+      // Store in Supabase
+      const { data, error } = await supabase
+        .from('papers')
+        .insert([paper])
+        .select();
 
-      // Update Redux state
-      dispatch(addPaper(paper));
+      if (error) throw error;
+
+      // Update Redux state with the inserted paper
+      dispatch(addPaper(data[0]));
       
       setUploadStatus({ 
         success: true, 

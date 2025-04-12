@@ -3,8 +3,43 @@ import { Container, Typography, Paper, Table, TableBody, TableCell, TableHead, T
 import { useSelector } from 'react-redux';
 
 export default function Leaderboard() {
-  const scores = useSelector(state => state.leaderboard.scores);
+  const [scores, setScores] = useState([]);
   const userScore = useSelector(state => state.games.score);
+  
+  useEffect(() => {
+    const fetchScores = async () => {
+      const { data, error } = await supabase
+        .from('game_sessions')
+        .select(`
+          id,
+          score,
+          created_at,
+          users (
+            email
+          ),
+          papers (
+            title
+          )
+        `)
+        .order('score', { ascending: false })
+        .limit(10);
+
+      if (error) {
+        console.error('Error fetching scores:', error);
+        return;
+      }
+
+      setScores(data.map(session => ({
+        id: session.id,
+        userName: session.users?.email || 'Anonymous',
+        paperTitle: session.papers?.title || 'Unknown Paper',
+        score: session.score,
+        date: session.created_at
+      })));
+    };
+
+    fetchScores();
+  }, []);
   
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
