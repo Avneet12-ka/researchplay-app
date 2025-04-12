@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { supabase } from './supabaseClient';
 import { login, logout } from './store/authSlice';
-import { ThemeProvider } from '@mui/material';
 import theme from './theme';
 import './App.css';
 
@@ -84,9 +83,7 @@ function AppContent() {
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <AppContent />
-    </ThemeProvider>
+    <AppContent />
   );
 }
 

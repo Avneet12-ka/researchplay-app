@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
 import { Container, Typography, Paper, Box, TextField, Button, Alert, Link } from '@mui/material';
@@ -21,8 +21,8 @@ export default function Login() {
 
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+        email: email,
+        password: password,
       });
 
       if (error) throw error;
@@ -33,10 +33,13 @@ export default function Login() {
           email: data.user.email,
         }));
         setMessage({ type: 'success', content: 'Login successful!' });
-        navigate('/');
+        setTimeout(() => navigate('/'), 1500);
+      } else {
+        throw new Error('Login successful, but no session data received.');
       }
     } catch (error) {
       setMessage({ type: 'error', content: `Login failed: ${error.message}` });
+      console.error('Login Error:', error);
     } finally {
       setLoading(false);
     }
@@ -74,7 +77,7 @@ export default function Login() {
             {loading ? 'Logging in...' : 'Login'}
           </Button>
           {message.content && (
-            <Alert severity={message.type}>
+            <Alert severity={message.type} sx={{ mt: 2 }}>
               {message.content}
             </Alert>
           )}
