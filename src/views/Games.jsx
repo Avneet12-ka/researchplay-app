@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { Container, Typography, Paper, Box, Grid, Card, CardContent, CardActions, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { supabase } from '../supabaseClient';
 import { setCurrentGame, updateScore } from '../store/gamesSlice';
 
 import { useSelector } from 'react-redux';
@@ -17,7 +19,7 @@ export default function Games() {
   const [selectedGame, setSelectedGame] = useState(null);
   const dispatch = useDispatch();
 
-  const handlePlayGame = (game) => {
+  const handlePlayGame = async (game) => {
     setSelectedGame(game);
     dispatch(setCurrentGame(game));
     // Simulate scoring
