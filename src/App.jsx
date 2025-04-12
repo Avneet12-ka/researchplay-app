@@ -13,6 +13,7 @@ import PaperReader from "./views/PaperReader";
 import Games from "./views/Games";
 import Leaderboard from "./views/Leaderboard";
 import Login from "./views/Login";
+import Signup from "./views/Signup";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/games" element={<Games />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
         </Router>
       </ThemeProvider>
