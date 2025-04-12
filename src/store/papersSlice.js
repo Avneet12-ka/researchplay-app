@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const papersSlice = createSlice({
   name: 'papers',
   initialState: {
-    papers: [],
+    papers: JSON.parse(localStorage.getItem('papers') || '[]'),
     loading: false,
     error: null,
   },

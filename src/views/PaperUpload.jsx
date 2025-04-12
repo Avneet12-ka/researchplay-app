@@ -1,34 +1,54 @@
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Container, Typography, Paper, Box, Button, LinearProgress } from '@mui/material';
+import { Container, Typography, Paper, Box, Button, LinearProgress, Alert } from '@mui/material';
 import { addPaper } from '../store/papersSlice';
 
 export default function PaperUpload() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState({ success: false, message: '' });
   const dispatch = useDispatch();
 
   const handleFileSelect = (e) => {
     setFile(e.target.files[0]);
+    setUploadStatus({ success: false, message: '' });
   };
 
   const handleUpload = async () => {
     if (!file) return;
     
     setUploading(true);
-    // Simulate upload delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    dispatch(addPaper({
-      id: Date.now(),
-      title: file.name,
-      uploadDate: new Date().toISOString(),
-      size: file.size
-    }));
-    
-    setUploading(false);
-    setFile(null);
+    try {
+      // Create a paper object
+      const paper = {
+        id: Date.now(),
+        title: file.name,
+        uploadDate: new Date().toISOString(),
+        size: file.size
+      };
+
+      // Store in localStorage
+      const papers = JSON.parse(localStorage.getItem('papers') || '[]');
+      papers.push(paper);
+      localStorage.setItem('papers', JSON.stringify(papers));
+
+      // Update Redux state
+      dispatch(addPaper(paper));
+      
+      setUploadStatus({ 
+        success: true, 
+        message: 'Paper uploaded successfully!' 
+      });
+      setFile(null);
+    } catch (error) {
+      setUploadStatus({ 
+        success: false, 
+        message: 'Failed to upload paper. Please try again.' 
+      });
+    } finally {
+      setUploading(false);
+    }
   };
 
   return (
@@ -56,6 +76,11 @@ export default function PaperUpload() {
             </Typography>
           )}
           {uploading && <LinearProgress />}
+          {uploadStatus.message && (
+            <Alert severity={uploadStatus.success ? "success" : "error"}>
+              {uploadStatus.message}
+            </Alert>
+          )}
           <Button
             variant="contained"
             onClick={handleUpload}
