@@ -1,0 +1,200 @@
+Okay, I understand the app still feels non-functional. Thanks for providing the code files again.
+
+After carefully reviewing the code you uploaded in the `vite-init` folder this time, I can see why the core functionalities like login aren't working yet.
+
+**Here's the situation:**
+
+1.  **Signup Code:** The code in `src/views/Signup.jsx` **is correct** and includes the logic to call `supabase.auth.signUp()`. So, the signup part *should* be attempting to contact Supabase.
+2.  **Login Code:** The code currently inside `src/views/Login.jsx` is still the **placeholder/dummy logic**. It's *not* calling Supabase to actually verify the email and password. It just pretends the login is successful and sends fake data to the Redux store. This is why login doesn't actually work.
+3.  **Session Handling Code:** The code in `src/App.jsx` is missing the crucial `useEffect` hook that checks if a user is already logged in when the app loads (using `supabase.auth.getSession()`) and listens for login/logout events (`supabase.auth.onAuthStateChange`). Without this, even if you could log in, refreshing the page would make the app forget you.
+
+**To make authentication functional, we need to apply the code changes for `Login.jsx` and `App.jsx` that I provided in the previous step.**
+
+Let's try this again, focusing on these two files:
+
+**Step 1: Update `src/views/Login.jsx`**
+
+* **Open `src/views/Login.jsx`** in the Replit editor.
+* **Delete all the existing code** in that file.
+* **Copy and paste the complete code below** into the empty `src/views/Login.jsx` file:
+
+    ```jsx
+    import React, { useState } from 'react';
+    import { useDispatch } from 'react-redux';
+    import { useNavigate, Link as RouterLink } from 'react-router-dom'; // Import Link
+    import { Container, Typography, Paper, Box, TextField, Button, Alert, Link } from '@mui/material';
+    import { supabase } from '../supabaseClient'; // Import Supabase client
+    import { login } from '../store/authSlice'; // Import Redux login action
+
+    export default function Login() {
+      const [email, setEmail] = useState('');
+      const [password, setPassword] = useState('');
+      const [loading, setLoading] = useState(false);
+      const [message, setMessage] = useState({ type: '', content: '' });
+      const dispatch = useDispatch();
+      const navigate = useNavigate();
+
+      const handleLogin = async (event) => {
+        event.preventDefault();
+        setLoading(true);
+        setMessage({ type: '', content: '' });
+
+        try {
+          // Attempt to sign in with Supabase
+          const { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password,
+          });
+
+          if (error) throw error; // Throw error if Supabase returns one
+
+          // If login is successful, Supabase returns session and user data
+          if (data.session && data.user) {
+            // Dispatch user info to Redux store
+            // Adjust payload based on what your authSlice expects
+            dispatch(login({ 
+              id: data.user.id, 
+              email: data.user.email, 
+              // Add other user details if needed later
+            }));
+            setMessage({ type: 'success', content: 'Login successful!' });
+            // Use setTimeout to allow user to see message before redirect
+            setTimeout(() => navigate('/'), 1500); // Navigate to dashboard
+          } else {
+            throw new Error('Login successful, but no session data received.');
+          }
+
+        } catch (error) {
+          setMessage({ type: 'error', content: `Login failed: ${error.message}` });
+          console.error('Login Error:', error);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      return (
+        <Container maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
+          <Typography variant="h4" gutterBottom align="center">
+            Login
+          </Typography>
+          <Paper sx={{ p: 4 }}>
+            <Box component="form" onSubmit={handleLogin} sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              <TextField
+                label="Email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                fullWidth
+              />
+              <TextField
+                label="Password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                fullWidth
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                disabled={loading}
+                size="large"
+              >
+                {loading ? 'Logging in...' : 'Login'}
+              </Button>
+              {message.content && (
+                <Alert severity={message.type} sx={{ mt: 2 }}>
+                  {message.content}
+                </Alert>
+              )}
+              <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+                Don't have an account?{' '}
+                {/* Use RouterLink for internal navigation */}
+                <Link component={RouterLink} to="/signup"> 
+                  Sign up
+                </Link>
+              </Typography>
+            </Box>
+          </Paper>
+        </Container>
+      );
+    }
+    ```
+
+**Step 2: Update `src/App.jsx` for Session Handling**
+
+* **Open `src/App.jsx`** in the Replit editor.
+* **Add the following imports** at the top with the other `import` statements:
+
+    ```javascript
+    import React, { useState, useEffect } from 'react'; // Make sure useState, useEffect are imported
+    import { useDispatch } from 'react-redux';
+    import { supabase } from './supabaseClient'; 
+    import { login, logout } from './store/authSlice'; 
+    ```
+* **Inside the `App` function**, right after the line `function App() {` and before the `return (` statement, **add these lines**:
+
+    ```javascript
+     const dispatch = useDispatch();
+     const [loadingSession, setLoadingSession] = useState(true); 
+
+     useEffect(() => {
+       let mounted = true; 
+
+       async function getSession() {
+         const { data: { session }, error } = await supabase.auth.getSession();
+         if (mounted) {
+           if (error) {
+             console.error("Error getting session:", error);
+           } else if (session?.user) {
+             dispatch(login({ 
+               id: session.user.id, 
+               email: session.user.email,
+             }));
+           } else {
+             dispatch(logout());
+           }
+           setLoadingSession(false); 
+         }
+       }
+
+       getSession();
+
+       const { data: { subscription } } = supabase.auth.onAuthStateChange(
+         (_event, session) => {
+           if (mounted) {
+             if (session?.user) {
+                dispatch(login({ 
+                  id: session.user.id, 
+                  email: session.user.email,
+                }));
+             } else {
+                dispatch(logout());
+             }
+           }
+         }
+       );
+
+       return () => {
+         mounted = false;
+         subscription?.unsubscribe();
+       };
+     }, [dispatch]); 
+
+     if (loadingSession) {
+         return <div>Loading session...</div>; 
+     }
+    ```
+* Make sure the rest of your `App.jsx` (the `return (...)` part with `Provider`, `ThemeProvider`, `Router`, etc.) remains below this added code block.
+
+**Step 3: Test Again**
+
+1.  Ensure the Vite server restarts in the Replit console (it should happen automatically when you save the files). Check for any *new* errors.
+2.  Go to the `/signup` page in the WebView and try signing up.
+3.  Check your email and click the confirmation link from Supabase.
+4.  Go to the `/login` page in the WebView and try logging in.
+5.  Check if you are redirected to the dashboard and if the UI updates (e.g., does the "Welcome Guest!" message change?).
+6.  Refresh the page – does the app remember you are logged in?
+
+Please carefully replace the code in `Login.jsx` and add the code block to `App.jsx` as described. This is the key step to connecting the actual authentication logic. Let me know if it works this time or if you encounter any different errors!
