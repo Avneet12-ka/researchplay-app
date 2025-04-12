@@ -2,11 +2,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Container, Typography, Paper, Box, TextField, Button } from '@mui/material';
+import { Container, Typography, Paper, Box, TextField, Button, FormControl, InputLabel, Select, MenuItem, Link } from '@mui/material';
 import { login } from '../store/authSlice';
 
 export default function Login() {
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [credentials, setCredentials] = useState({ email: '', password: '', role: 'student' });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -39,6 +39,17 @@ export default function Login() {
               onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
               required
             />
+            <FormControl fullWidth>
+              <InputLabel>Role</InputLabel>
+              <Select
+                value={credentials.role}
+                label="Role"
+                onChange={(e) => setCredentials({ ...credentials, role: e.target.value })}
+              >
+                <MenuItem value="student">Student</MenuItem>
+                <MenuItem value="staff">Staff</MenuItem>
+              </Select>
+            </FormControl>
             <Button 
               type="submit"
               variant="contained"
@@ -47,6 +58,9 @@ export default function Login() {
             >
               Login
             </Button>
+            <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+              Don't have an account? <Link href="https://replit.com/signup" target="_blank">Sign up</Link>
+            </Typography>
           </Box>
         </form>
       </Paper>

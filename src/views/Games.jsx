@@ -4,11 +4,14 @@ import { Container, Typography, Paper, Box, Grid, Card, CardContent, CardActions
 import { useDispatch } from 'react-redux';
 import { setCurrentGame, updateScore } from '../store/gamesSlice';
 
-const GAMES = [
-  { id: 1, title: 'Vocabulary Match', description: 'Match research terms with their definitions' },
-  { id: 2, title: 'Citation Challenge', description: 'Format citations correctly to earn points' },
-  { id: 3, title: 'Research Quiz', description: 'Test your knowledge of research methodologies' },
-];
+import { useSelector } from 'react-redux';
+
+const createGameFromPaper = (paper) => ({
+  id: `game-${paper.id}`,
+  title: `Quiz: ${paper.title}`,
+  description: 'Test your understanding of the research paper',
+  paperId: paper.id
+});
 
 export default function Games() {
   const [selectedGame, setSelectedGame] = useState(null);
@@ -23,13 +26,16 @@ export default function Games() {
     }, 1000);
   };
 
+  const papers = useSelector(state => state.papers.papers);
+  const games = papers.map(createGameFromPaper);
+  
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Typography variant="h4" gutterBottom>
-        Research Games
+        Paper-Based Games
       </Typography>
       <Grid container spacing={3}>
-        {GAMES.map((game) => (
+        {games.map((game) => (
           <Grid item xs={12} sm={6} md={4} key={game.id}>
             <Card>
               <CardContent>

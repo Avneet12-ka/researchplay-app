@@ -1,14 +1,9 @@
 
-import { Container, Typography, Paper, Box, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Container, Typography, Paper, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { useSelector } from 'react-redux';
 
-const MOCK_LEADERS = [
-  { id: 1, name: 'John Doe', score: 850, gamesPlayed: 12 },
-  { id: 2, name: 'Jane Smith', score: 720, gamesPlayed: 8 },
-  { id: 3, name: 'Bob Johnson', score: 695, gamesPlayed: 10 },
-];
-
 export default function Leaderboard() {
+  const scores = useSelector(state => state.leaderboard.scores);
   const userScore = useSelector(state => state.games.score);
   
   return (
@@ -25,17 +20,19 @@ export default function Leaderboard() {
             <TableRow>
               <TableCell>Rank</TableCell>
               <TableCell>Name</TableCell>
+              <TableCell>Paper</TableCell>
               <TableCell align="right">Score</TableCell>
-              <TableCell align="right">Games Played</TableCell>
+              <TableCell align="right">Date</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {MOCK_LEADERS.map((leader, index) => (
-              <TableRow key={leader.id}>
+            {scores.map((score, index) => (
+              <TableRow key={score.id}>
                 <TableCell>{index + 1}</TableCell>
-                <TableCell>{leader.name}</TableCell>
-                <TableCell align="right">{leader.score}</TableCell>
-                <TableCell align="right">{leader.gamesPlayed}</TableCell>
+                <TableCell>{score.userName}</TableCell>
+                <TableCell>{score.paperTitle}</TableCell>
+                <TableCell align="right">{score.score}</TableCell>
+                <TableCell align="right">{new Date(score.date).toLocaleDateString()}</TableCell>
               </TableRow>
             ))}
           </TableBody>
