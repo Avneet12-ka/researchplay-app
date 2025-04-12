@@ -1,11 +1,10 @@
+
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { supabase } from './supabaseClient';
 import { login, logout } from './store/authSlice';
 import { ThemeProvider } from '@mui/material';
-import { Provider } from 'react-redux';
-import { store } from './store';
 import theme from './theme';
 import './App.css';
 
@@ -18,7 +17,7 @@ import Leaderboard from "./views/Leaderboard";
 import Login from "./views/Login";
 import Signup from "./views/Signup";
 
-function App() {
+function AppContent() {
   const dispatch = useDispatch();
   const [loadingSession, setLoadingSession] = useState(true);
 
@@ -68,22 +67,26 @@ function App() {
   }
 
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <Router>
-          <Navigation />
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/upload" element={<PaperUpload />} />
-            <Route path="/reader" element={<PaperReader />} />
-            <Route path="/games" element={<Games />} />
-            <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-          </Routes>
-        </Router>
-      </ThemeProvider>
-    </Provider>
+    <Router>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/upload" element={<PaperUpload />} />
+        <Route path="/reader" element={<PaperReader />} />
+        <Route path="/games" element={<Games />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </Router>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 
