@@ -9,10 +9,10 @@ import './App.css';
 
 import Navigation from "./components/Navigation";
 import Dashboard from "./views/Dashboard";
+import PapersList from "./views/PapersList";
 import PaperUpload from "./views/PaperUpload";
 import PaperReader from "./views/PaperReader";
 import Games from "./views/Games";
-import Leaderboard from "./views/Leaderboard";
 import Login from "./views/Login";
 import Signup from "./views/Signup";
 
@@ -70,10 +70,11 @@ function AppContent() {
       <Navigation />
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path="/papers" element={<PapersList />} />
         <Route path="/upload" element={<PaperUpload />} />
         <Route path="/reader" element={<PaperReader />} />
+        <Route path="/reader/:id" element={<PaperReader />} />
         <Route path="/games" element={<Games />} />
-        <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
