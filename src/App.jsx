@@ -23,14 +23,19 @@ function AppContent() {
   useEffect(() => {
     let mounted = true;
 
+    if (!supabase) {
+      setLoadingSession(false);
+      return;
+    }
+
     async function getSession() {
       const { data: { session }, error } = await supabase.auth.getSession();
       if (mounted) {
         if (error) {
           console.error("Error getting session:", error);
         } else if (session?.user) {
-          dispatch(login({ 
-            id: session.user.id, 
+          dispatch(login({
+            id: session.user.id,
             email: session.user.email,
           }));
         }
@@ -44,8 +49,8 @@ function AppContent() {
       (_event, session) => {
         if (mounted) {
           if (session?.user) {
-            dispatch(login({ 
-              id: session.user.id, 
+            dispatch(login({
+              id: session.user.id,
               email: session.user.email,
             }));
           } else {
