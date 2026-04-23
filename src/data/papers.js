@@ -837,6 +837,227 @@ export const papers = [
       ]
     }
   },
+  {
+    id: 'haira-maturity',
+    title: 'Healthcare AI Governance Readiness Assessment',
+    subtitle: 'A five-level maturity model for AI governance, built from 29 frameworks',
+    authors: 'Hussein R, Zink A, Ramadan B, Howard FM, Hightower M, Shah S, Beaulieu-Jones BK',
+    journal: 'npj Digital Medicine 2026;9:236',
+    doi: '10.1038/s41746-026-02418-7',
+    tagline: 'A systematic review of 29 AI governance frameworks found that the comprehensive ones assume academic-medical-centre resources most hospitals don’t have. HAIRA answers with a five-level maturity model and one blunt rule: the weakest domain decides your level.',
+
+    comic: {
+      panels: [
+        { title: 'The frameworks, the funnel, the gap', caption: '2,351 articles screened. 260 after filtering. 29 included. Every comprehensive AI governance framework assumes an academic medical centre. Most hospitals aren’t one.', svg: 'funnel' },
+        { title: 'Seven domains, one picture', caption: 'Organisational structure. Problem formulation. External evaluation. Algorithm development. Model evaluation. Deployment and integration. Monitoring and maintenance. HAIRA says you need a floor in each of them, not a ceiling in one.', svg: 'wheel' },
+        { title: 'Five levels, one ladder', caption: 'Level 1 Initial/Ad Hoc. Level 2 Defined. Level 3 Established. Level 4 Advanced. Level 5 Leading. Each rung is a bundle of resource, process, and decision-rights — not just a score.', svg: 'ladder' },
+        { title: 'The weakest link decides', caption: 'The minimum-domain rule: your HAIRA level is the highest level for which every domain meets that level’s floor. One weak domain caps the whole system. It is the single most useful constraint in the paper.', svg: 'chain' },
+        { title: 'Radiology at 4, hospital at 2', caption: 'HAIRA can be scored at the health-system level or the service-line level. A sophisticated radiology AI programme sitting inside a Level-2 hospital is a real pattern. The paper names it and does not pretend the hospital is Level 4.', svg: 'compare' },
+        { title: 'The governance body', caption: 'A multidisciplinary AI oversight committee starts as clinical + IT at Level 2 and becomes executive-level with subcommittees by Level 4. Chief AI Officer roles are emerging. The committee is the scaffolding every other domain hangs off.', svg: 'committee' },
+        { title: 'No trial data, yet', caption: 'HAIRA is a derivation, not an evaluation. The authors are upfront: governance frameworks in this literature are almost entirely conceptual. They call for electronic, rapid RCTs of governance interventions. None yet exists.', svg: 'null' },
+        { title: 'Built for smaller systems', caption: 'SALIENT and OPTICA are comprehensive but expensive. HAIRA’s point is to let a community hospital credibly claim Level 2, know exactly what Level 3 would require, and not pretend to operate at Level 4 because a vendor said so.', svg: 'scales' }
+      ]
+    },
+
+    slides: [
+      { kind: 'title', eyebrow: 'Slide 1 of 10', title: 'Governance frameworks are not one-size. They shouldn’t pretend to be.', body: 'Every hospital deploys AI under different constraints. HAIRA (Hussein et al. 2026, npj Digital Medicine) is a five-level maturity model that asks not what you aspire to, but what your organisation can credibly operate today — across seven governance domains, all at once.' },
+      { kind: 'text', eyebrow: 'Slide 2 of 10 — The problem', title: 'Existing frameworks assume resources most hospitals don’t have', body: 'Published comprehensive frameworks (SALIENT, OPTICA, HEAAL, the NIST AI RMF) are rigorous, but assume in-house data science teams, AI ethics committees, and enterprise data warehouses. Community and regional systems — which is most of the world — cannot adopt them unchanged. The result: governance either gets skipped, or gets performed without the scaffolding to make it real.' },
+      { kind: 'text', eyebrow: 'Slide 3 of 10 — The method', title: 'Systematic review of 29 frameworks published 2019–2024', body: 'PRISMA 2020 flow: 2,351 articles identified, 2,110 after deduplication, 260 after journal filtering, 29 included (27 peer-reviewed, 2 sector-shaping grey literature — CHAI and NIST — appraised with AACODS). Two reviewers independently coded recommendations. Conducted on PubMed/Medline, search run April 13 2025.' },
+      {
+        kind: 'chart', eyebrow: 'Slide 4 of 10 — What the 29 frameworks covered', title: 'Most work concentrated on three domains, least on two',
+        body: 'Across the included frameworks, problem formulation, algorithm development, and monitoring received the most recommendation coverage. External algorithm evaluation and organisational structure received the least — a gap HAIRA is designed to fill.',
+        chart: { kind: 'bars', unit: 'frameworks', max: 29, bars: [
+          { label: 'Monitoring and maintenance', value: 24, color: '#1E3A5F' },
+          { label: 'Problem formulation', value: 22, color: '#1E3A5F' },
+          { label: 'Algorithm development', value: 21, color: '#1E3A5F' },
+          { label: 'Model evaluation', value: 18, color: '#C26A3D' },
+          { label: 'Deployment and integration', value: 17, color: '#C26A3D' },
+          { label: 'External algorithm evaluation', value: 11, color: '#c62828' },
+          { label: 'Organisational structure', value: 9, color: '#c62828' }
+        ] }
+      },
+      { kind: 'text', eyebrow: 'Slide 5 of 10 — The seven domains', title: 'HAIRA’s axes', body: 'Organisational structure. Problem formulation. External algorithm evaluation. Algorithm development. Model evaluation. Deployment and integration. Monitoring and maintenance. These are derived inductively from the review. Every HAIRA level has a benchmark for each.' },
+      { kind: 'headline', eyebrow: 'Slide 6 of 10 — The rule that matters', title: 'The minimum-domain rule: the weakest link caps the whole system', body: 'Your HAIRA level is the highest level for which every domain meets that level’s floor. This is the paper’s most useful contribution, and the hardest thing for a hospital to accept. One weak domain caps the overall level, even if everything else is advanced.' },
+      {
+        kind: 'cohortChart', eyebrow: 'Slide 7 of 10 — What each level looks like', title: 'The five HAIRA levels, by characteristic',
+        body: 'Each level is a bundle: organisational maturity + process discipline + evaluation capability + who decides. Below, three toggles show the same five levels through different cuts: required expertise, governance mechanism, and evaluation approach.',
+        cohorts: {
+          'By required expertise': { note: 'Expertise floor for each HAIRA level', bars: [
+            { label: 'L1 — basic IT + vendor support', value: 1, color: '#9e9e9e' },
+            { label: 'L2 — dedicated IT + clinical informatics', value: 2, color: '#455a64' },
+            { label: 'L3 — data science team + EDW', value: 3, color: '#1E3A5F' },
+            { label: 'L4 — AI research teams + ethics committee', value: 4, color: '#C26A3D' },
+            { label: 'L5 — world-class AI research + institute', value: 5, color: '#2e7d32' }
+          ], max: 5 },
+          'By governance body': { note: 'What the AI oversight structure looks like at each level', bars: [
+            { label: 'L1 — no formal structure', value: 1, color: '#9e9e9e' },
+            { label: 'L2 — basic IT + clinical committee', value: 2, color: '#455a64' },
+            { label: 'L3 — multidisciplinary committee', value: 3, color: '#1E3A5F' },
+            { label: 'L4 — exec-level AI officer + subcommittees', value: 4, color: '#C26A3D' },
+            { label: 'L5 — centre of excellence, industry standard-setter', value: 5, color: '#2e7d32' }
+          ], max: 5 },
+          'By evaluation approach': { note: 'How each level handles model evaluation', bars: [
+            { label: 'L1 — accept vendor claims', value: 1, color: '#9e9e9e' },
+            { label: 'L2 — documented vendor selection criteria', value: 2, color: '#455a64' },
+            { label: 'L3 — internal validation + bias testing', value: 3, color: '#1E3A5F' },
+            { label: 'L4 — prospective real-world validation', value: 4, color: '#C26A3D' },
+            { label: 'L5 — multi-centre studies, standards-setting', value: 5, color: '#2e7d32' }
+          ], max: 5 }
+        }, max: 5
+      },
+      { kind: 'text', eyebrow: 'Slide 8 of 10 — Service-line vs system', title: 'Radiology can be Level 4 inside a Level 2 hospital', body: 'HAIRA can be scored at the system level or the service-line level. The authors expect heterogeneity — a well-resourced department inside a resource-constrained system is a real pattern. The service-line score does not promote the system score. This is an honest, operationally useful feature.' },
+      { kind: 'text', eyebrow: 'Slide 9 of 10 — What HAIRA is not', title: 'A derivation, not an evaluation', body: 'HAIRA is not empirically validated yet. Governance frameworks in this literature are almost entirely conceptual — Hussein et al. explicitly flag this as a critical gap and call for rapid, electronic RCTs of governance interventions. No such trial has yet been published. The honest reading is that HAIRA is a well-constructed hypothesis, not a proven intervention.' },
+      { kind: 'headline', eyebrow: 'Slide 10 of 10 — The point', title: 'Pretending to be Level 4 because your vendor says so is worse than being Level 2', body: 'HAIRA’s quiet contribution is permission. It lets a Malaysian community hospital credibly say: we operate at Level 2, this is what Level 3 would require of us, and this is what we should not claim to do yet. That clarity is more valuable than a better algorithm.' }
+    ],
+
+    paper: {
+      glossary: {
+        'HAIRA': 'Healthcare AI Governance Readiness Assessment. A five-level (L1–L5) maturity model introduced in this paper, with benchmarks across seven governance domains, scorable at the health-system or service-line level.',
+        'maturity model': 'A staged framework for assessing organisational capability, where each level represents a bundle of people, process, and infrastructure rather than a single score. Earlier examples in healthcare IT include the HIMSS EMR Adoption Model.',
+        'minimum-domain rule': 'HAIRA’s scoring rule: overall level equals the highest level for which every one of the seven domains meets that level’s minimum standard. One weak domain caps the whole score. No additive averaging is permitted.',
+        'PRISMA 2020': 'The Preferred Reporting Items for Systematic Reviews and Meta-Analyses, 2020 revision. The reporting standard for systematic reviews, including a standardised flow diagram of identification, screening, and inclusion.',
+        'AACODS': 'Authority, Accuracy, Coverage, Objectivity, Date, Significance. The checklist used to appraise grey literature (here, CHAI and NIST) when peer-review-based quality tools are not applicable.',
+        'grey literature': 'Material not published through traditional peer-reviewed journals — reports, standards documents, regulatory guidance.',
+        'SALIENT': 'A published AI implementation framework focused on detailed, stage-specific guidance for the AI lifecycle. Comprehensive but resource-intensive to implement in full.',
+        'OPTICA': 'Another framework identified in this review as among the most comprehensive — touching every phase of the AI lifecycle. Cited as an example of a tool that assumes advanced organisational resources.',
+        'NIST AI RMF': 'The US National Institute of Standards and Technology’s AI Risk Management Framework. Structured around four functions: govern, map, measure, manage. Included as grey literature in this review.',
+        'FDA SaMD': 'Food and Drug Administration’s regulatory category for Software as a Medical Device, including AI/ML-based clinical decision tools.',
+        'EU AI Act': 'European Union regulation creating tiered obligations for AI systems based on risk, with specific provisions for high-risk medical AI including bias mitigation and data quality requirements.',
+        'Chief AI Officer': 'An emerging executive-level role responsible for AI strategy and governance coordination. HAIRA Level 4 assumes this role exists or an equivalent.',
+        'service-line': 'A subunit of a hospital — e.g., radiology, cardiology — that may have its own resources, AI exposure, and governance maturity distinct from the overall system.',
+        'weakest-link rule': 'Plain-English name for the minimum-domain rule. Same mechanism: the lowest-scoring domain determines the overall score.',
+        'Algorithm Change Protocol': 'An FDA concept for continuously-updating AI/ML medical devices: the device submits, in advance, a defined plan for how it will retrain and be re-evaluated, rather than re-seeking approval after each update.'
+      },
+      marginNotes: {
+        'abstract-scope': 'What this sentence actually claims: HAIRA is derived from a systematic review of 35 frameworks (29 peer-reviewed + 2 grey literature in the final synthesis). It is not a trial, has no implementation data, and is offered as a structured hypothesis for the field to test.',
+        'results-coverage': 'What this sentence actually claims: organisational structure (9/29) and external algorithm evaluation (11/29) are the most neglected domains in the published literature. HAIRA is deliberately built to force attention onto them via the minimum-domain rule.',
+        'discussion-no-rcts': 'What this sentence actually claims: the field has no RCT evidence that any AI governance framework produces better outcomes than ad-hoc governance. That includes HAIRA itself. The authors are transparent about this and explicitly call for rapid, electronically-conducted trials of governance interventions.'
+      },
+      sections: [
+        {
+          heading: 'Abstract',
+          paragraphs: [
+            { id: 'abstract-setup', text: ['Artificial Intelligence (AI) deployment in healthcare is accelerating, yet governance frameworks remain fragmented and often assume extensive resources. Through a systematic review of 35 frameworks for AI implementation in healthcare (published 2019–2024), we identified seven critical domains of healthcare AI governance.'] },
+            { id: 'abstract-scope', marginNote: 'abstract-scope', text: [
+              'While existing frameworks provide valuable guidance, the resource requirements create barriers for smaller healthcare organisations. To address this gap, we organised key findings from the review to create the ',
+              { term: 'HAIRA', text: 'Healthcare AI Governance Readiness Assessment (HAIRA)' },
+              ', a five-level ',
+              { term: 'maturity model', text: 'maturity model' },
+              ' that provides actionable governance pathways based on organisational resources.'
+            ] },
+            { id: 'abstract-levels', text: [
+              'HAIRA spans from Level 1 (Initial/Ad Hoc) to Level 5 (Leading), with specific benchmarks across all seven governance domains. Placement uses a ',
+              { term: 'minimum-domain rule', text: 'minimum-domain rule' },
+              ' — the overall level is capped by the weakest domain. This tiered approach enables healthcare organisations to assess their current AI governance capabilities and establish appropriate advancement targets, including adaptive governance strategies for systems of varying resource levels.'
+            ] }
+          ]
+        },
+        {
+          heading: 'Methods — systematic review',
+          paragraphs: [
+            { id: 'methods-search', text: [
+              'We followed ',
+              { term: 'PRISMA 2020', text: 'PRISMA 2020' },
+              ' guidelines. PubMed/Medline was searched in English for 2019–2024 publications using: ("Artificial Intelligence" [MeSH] OR "AI") AND ("Delivery of Health Care" [MeSH]) AND (framework OR governance OR checklist OR guideline). Search run April 13, 2025. Two peer-reviewed frameworks not captured by indexing (FURM and OPTICA) were added manually, and two ',
+              { term: 'grey literature', text: 'grey literature' },
+              ' sources (CHAI and NIST) were included after appraisal with ',
+              { term: 'AACODS', text: 'AACODS' },
+              '.'
+            ] },
+            { id: 'methods-flow', text: ['Flow: 2,351 articles identified → 2,110 after deduplication → 260 after journal-scope filtering → 29 included in the final synthesis (comprising peer-reviewed frameworks plus the two manually included and the two grey-literature additions).'] }
+          ]
+        },
+        {
+          heading: 'Results — seven domains, uneven coverage',
+          paragraphs: [
+            { id: 'results-domains', text: ['Inductive coding produced seven governance domains: (1) organisational structure; (2) problem formulation; (3) external algorithm evaluation; (4) algorithm development and model training; (5) model evaluation; (6) deployment and integration; (7) monitoring and maintenance.'] },
+            { id: 'results-coverage', marginNote: 'results-coverage', text: [
+              'Coverage across the 29 included frameworks was uneven. Monitoring, problem formulation, and algorithm development were the most frequently addressed. Organisational structure and external algorithm evaluation were the least — a pattern that directly motivates HAIRA’s ',
+              { term: 'weakest-link rule', text: 'weakest-link rule' },
+              ', which refuses to let strong coverage in a popular domain substitute for weakness in a neglected one.'
+            ] }
+          ]
+        },
+        {
+          heading: 'HAIRA — the maturity model',
+          paragraphs: [
+            { id: 'haira-levels', text: ['HAIRA has five levels. Level 1 (Initial/Ad Hoc): reactive, vendor-dependent, no formal governance body. Level 2 (Defined): documented processes, basic IT + clinical oversight committee, structured vendor selection. Level 3 (Established): multidisciplinary committee, internal validation including bias testing, enterprise data warehouse, dedicated AI deployment staff. Level 4 (Advanced): executive-level AI officer, ethics committee, prospective real-world validation, advanced computing infrastructure. Level 5 (Leading): centre of excellence, setting industry evaluation standards, pioneering novel applications.'] },
+            { id: 'haira-rule', text: [
+              'Scoring uses the ',
+              { term: 'minimum-domain rule', text: 'minimum-domain rule' },
+              ': overall level equals the highest level for which every domain meets that level’s floor. HAIRA may be applied at the system or the ',
+              { term: 'service-line', text: 'service-line' },
+              ' level; heterogeneity is expected and named (e.g., a Level 4 radiology programme inside a Level 2 hospital). Service-line maturity does not promote system maturity.'
+            ] }
+          ]
+        },
+        {
+          heading: 'Discussion — what HAIRA is, and isn’t',
+          paragraphs: [
+            { id: 'discussion-gap', text: [
+              'Comprehensive frameworks exist (SALIENT, OPTICA, HEAAL, the ',
+              { term: 'NIST AI RMF', text: 'NIST AI RMF' },
+              ') but assume in-house data science, AI ethics committees, and research partnerships. Most community and regional health systems do not have these. HAIRA is explicitly designed to let such systems credibly assess current state, identify the specific domain gap that is capping their overall level, and plan advancement without pretending to operate at a level their resources cannot sustain.'
+            ] },
+            { id: 'discussion-no-rcts', marginNote: 'discussion-no-rcts', text: ['A significant limitation, named by the authors: the empirical evidence base for AI governance frameworks in healthcare is almost entirely absent. No published RCT has evaluated whether any framework — HAIRA included — produces better patient outcomes, safer deployments, or earlier detection of model drift than ad-hoc practice. The authors call for rapid, electronically-conducted trials of governance interventions. Until those exist, HAIRA is a structured, defensible hypothesis, not a proven intervention.'] },
+            { id: 'discussion-role', text: [
+              'Two emerging trends complement HAIRA. First, the ',
+              { term: 'Chief AI Officer', text: 'Chief AI Officer' },
+              ' role is spreading, mirroring the earlier emergence of CMIOs. HAIRA Level 4 assumes this role or equivalent authority exists. Second, regulatory scaffolding — the ',
+              { term: 'FDA SaMD', text: 'FDA SaMD' },
+              ' framework, the ',
+              { term: 'EU AI Act', text: 'EU AI Act' },
+              ', and ',
+              { term: 'Algorithm Change Protocol', text: 'Algorithm Change Protocols' },
+              ' for continuously-updating tools — is beginning to set the minimum floor from outside the organisation, even for Level 1 systems.'
+            ] }
+          ]
+        }
+      ]
+    },
+
+    governance: {
+      intro: 'HAIRA is itself a governance framework, so this governance layer asks the harder meta-question: how should a specific institution — not a Stanford or a Mass General, but a state hospital in Selangor or a district hospital in Sabah — actually apply HAIRA.',
+      cards: [
+        {
+          id: 'haira-for-malaysian-moh',
+          title: 'Should the Malaysian Ministry of Health adopt HAIRA as a national AI governance maturity benchmark?',
+          context: 'A MOH AI working group is deciding whether to adopt HAIRA as the formal maturity benchmark for public hospitals deploying AI, replacing the current ad-hoc vendor-by-vendor approval process.',
+          lenses: [
+            { lens: 'Institutional policy', body: 'Adopting HAIRA nationally gives every hospital the same vocabulary and the same minimum-domain rule. The risk is premature uniformity — HAIRA’s Level 3 floor includes an enterprise data warehouse and a dedicated data science team, infrastructure most state hospitals do not yet have. A staged adoption (Level 1–2 as mandatory, Level 3+ as aspirational with MOH funding) would protect against a policy that all public hospitals would immediately fail.' },
+            { lens: 'Regulatory', body: 'HAIRA is descriptive, not regulatory. Adopting it would require pairing with statutory force — MOH Circular or amendment to the Medical Device Authority (MDA) rules — and a defined reporting cadence. The EU AI Act and FDA SaMD pathway offer regulatory floors HAIRA does not replicate; Malaysia would need to decide whether HAIRA supplements or is supplemented by an MDA-led medical-device route.' },
+            { lens: 'Ethics', body: 'HAIRA’s weakest-link rule is ethically useful: it stops a hospital from claiming governance maturity because one flashy radiology AI works well while monitoring across the hospital is absent. It also introduces a risk: a hospital judged "Level 1" may be publicly pressured to claim higher levels than it can sustain. Self-assessment with no audit creates incentive for inflation. The honest path is external auditing, which is itself a Level 3+ capability.' },
+            { lens: 'Equity', body: 'Malaysia’s public healthcare system is geographically uneven — Klang Valley teaching hospitals cluster at Level 3+, rural state hospitals operate at Level 1. A national HAIRA policy that mandates Level 3 deployment standards effectively restricts AI to well-resourced sites, which is the opposite of the digital-health equity case. If HAIRA is adopted, it must be paired with targeted capacity-building investment — not used as a gatekeeper.' }
+          ],
+          prompt: 'If MOH adopts HAIRA and a rural state hospital self-assesses at Level 1 but is under pressure to adopt a sepsis-prediction AI marketed by a Klang Valley vendor, what is the right decision: block deployment (equity cost), allow with conditions (governance risk), or fund Level 2 uplift first (timeline cost)?'
+        },
+        {
+          id: 'service-line-vs-system',
+          title: 'When a service line is ahead of the hospital, which level do we publish?',
+          context: 'A 600-bed Malaysian tertiary hospital has a mature radiology AI programme (HAIRA Level 4 equivalent). The rest of the hospital has no AI governance body. A journal asks the hospital to self-report its HAIRA level for a case study.',
+          lenses: [
+            { lens: 'Institutional policy', body: 'HAIRA explicitly permits service-line scoring, and explicitly says service-line maturity does not promote system maturity. Policy-wise the answer is clean: report both. Report radiology at Level 4 and the system at Level 1 or 2. The temptation is to report the flattering number, but doing so violates the weakest-link rule HAIRA is built on.' },
+            { lens: 'Regulatory', body: 'If HAIRA is used in regulatory filings (e.g., MDA submission, EU AI Act conformity assessment), a single-number self-report is actively misleading. Any regulatory use of HAIRA should require the domain-by-domain breakdown, not just the final level.' },
+            { lens: 'Ethics', body: 'Publishing a higher number than the weakest-link rule supports is a form of institutional dishonesty — the same kind HAIRA’s rule was designed to prevent at the domain level. It creates false confidence for downstream users.' },
+            { lens: 'Equity', body: 'Service-line scoring has an equity dimension: well-resourced departments pull ahead while primary-care-adjacent service lines lag. A hospital that publishes only its best service-line score creates an illusion of maturity that obscures where AI governance is actually weakest — which is typically where the patients are most vulnerable.' }
+          ],
+          prompt: 'If the hospital publishes "Radiology L4, system L1" honestly, and loses a vendor tender to a hospital reporting "L4" using the radiology score alone, is HAIRA still working as intended — or has honest reporting become a competitive disadvantage?'
+        },
+        {
+          id: 'haira-without-rct-evidence',
+          title: 'Should a regulator mandate a framework whose effectiveness has no RCT evidence?',
+          context: 'A health technology assessment (HTA) body is asked whether HAIRA should be a required element in AI procurement. HAIRA is a conceptual framework; no RCT has demonstrated that it improves patient outcomes or reduces AI-related harm compared to ad-hoc governance.',
+          lenses: [
+            { lens: 'Institutional policy', body: 'Mandating an unvalidated framework is not unusual in healthcare — clinical guidelines are often based on expert consensus before definitive trial evidence. The mitigation is to mandate the structure without asserting it improves outcomes, and to pair the mandate with a prospective evaluation built in from day one.' },
+            { lens: 'Regulatory', body: 'Precedent exists: FDA’s Good Machine Learning Practice is also conceptual. The defensible regulatory move is conditional adoption — HAIRA is required, and the regulator commits to sponsoring a pragmatic cluster-randomised trial across adopting institutions within a defined window.' },
+            { lens: 'Ethics', body: 'Mandating an unvalidated governance framework is lower-risk than mandating an unvalidated clinical treatment — no direct patient harm from the framework itself. The ethical risk is opportunity cost: if HAIRA consumes governance resources that would otherwise go to specific high-impact controls, and HAIRA turns out not to improve outcomes, the cost is paid in displaced effort.' },
+            { lens: 'Equity', body: 'The equity risk is sharpest in low-resource settings where governance capacity is the binding constraint. The equitable path is tiered compliance — full HAIRA structured assessment in well-resourced sites, simplified "Level 1 and 2 minimum" self-attestation in small sites, paired with capacity funding.' }
+          ],
+          prompt: 'If a regulator mandates HAIRA today and the RCT in 2029 shows it has no measurable effect on AI-related patient harm, what was the right decision in 2026 — and who is accountable for the capacity redirected into a framework that did not work?'
+        }
+      ]
+    }
+  }
 ];
 
 export function getPaper(id) {

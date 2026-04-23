@@ -377,6 +377,120 @@ const ART = {
       <circle cx="210" cy="180" r="8" fill="#C26A3D" />
       <circle cx="250" cy="180" r="8" fill="#1E3A5F" />
     </g>
+  ),
+
+  // ---- keys added for haira-maturity ----
+
+  funnel: (
+    <g>
+      {/* PRISMA cascade: 2,351 → 2,110 → 260 → 29 */}
+      <polygon points="40,30 260,30 230,65 70,65" fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.5"/>
+      <polygon points="70,75 230,75 210,110 90,110" fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.5"/>
+      <polygon points="90,120 210,120 190,155 110,155" fill="#C26A3D" opacity="0.25" stroke="#C26A3D" strokeWidth="1.5"/>
+      <polygon points="110,165 190,165 175,195 125,195" fill="#C26A3D" stroke="#C26A3D" strokeWidth="1.5"/>
+      <text x="150" y="52" textAnchor="middle" fontSize="13" fontWeight="700" fill="#0B1728">2,351 screened</text>
+      <text x="150" y="97" textAnchor="middle" fontSize="12" fontWeight="600" fill="#0B1728">2,110 after dedup</text>
+      <text x="150" y="142" textAnchor="middle" fontSize="12" fontWeight="600" fill="#0B1728">260 full-text</text>
+      <text x="150" y="185" textAnchor="middle" fontSize="13" fontWeight="700" fill="#FAF7F2">29 included</text>
+      <text x="270" y="68" fontSize="10" fill="#0B1728" opacity="0.55">−241</text>
+      <text x="270" y="113" fontSize="10" fill="#0B1728" opacity="0.55">−1,850</text>
+      <text x="270" y="158" fontSize="10" fill="#0B1728" opacity="0.55">−231</text>
+    </g>
+  ),
+
+  wheel: (
+    <g>
+      {/* 7 domains as spokes — the 'org structure' spoke is highlighted (weakest at 9/29) */}
+      <circle cx="150" cy="100" r="22" fill="#1E3A5F" />
+      <text x="150" y="96" textAnchor="middle" fontSize="10" fontWeight="700" fill="#FAF7F2">HAIRA</text>
+      <text x="150" y="108" textAnchor="middle" fontSize="8" fill="#FAF7F2">7 domains</text>
+      <line x1="150" y1="100" x2="150" y2="25"  stroke="#1E3A5F" strokeWidth="1.5"/>
+      <line x1="150" y1="100" x2="223" y2="66"  stroke="#1E3A5F" strokeWidth="1.5"/>
+      <line x1="150" y1="100" x2="223" y2="140" stroke="#1E3A5F" strokeWidth="1.5"/>
+      <line x1="150" y1="100" x2="180" y2="172" stroke="#1E3A5F" strokeWidth="1.5"/>
+      <line x1="150" y1="100" x2="120" y2="172" stroke="#1E3A5F" strokeWidth="1.5"/>
+      <line x1="150" y1="100" x2="77"  y2="140" stroke="#1E3A5F" strokeWidth="1.5"/>
+      <line x1="150" y1="100" x2="77"  y2="66"  stroke="#1E3A5F" strokeWidth="1.5"/>
+      <circle cx="150" cy="25"  r="9"  fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.2"/>
+      <circle cx="223" cy="66"  r="9"  fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.2"/>
+      <circle cx="223" cy="140" r="9"  fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.2"/>
+      <circle cx="180" cy="172" r="9"  fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.2"/>
+      <circle cx="120" cy="172" r="9"  fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.2"/>
+      <circle cx="77"  cy="140" r="9"  fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.2"/>
+      <circle cx="77"  cy="66"  r="11" fill="#C26A3D" stroke="#C26A3D" strokeWidth="1.5"/>
+      <text x="150" y="18"  textAnchor="middle" fontSize="8.5" fill="#0B1728">Problem</text>
+      <text x="236" y="62"  textAnchor="start"  fontSize="8.5" fill="#0B1728">Ext eval</text>
+      <text x="236" y="144" textAnchor="start"  fontSize="8.5" fill="#0B1728">Algo dev</text>
+      <text x="186" y="188" textAnchor="middle" fontSize="8.5" fill="#0B1728">Model eval</text>
+      <text x="114" y="188" textAnchor="middle" fontSize="8.5" fill="#0B1728">Deploy</text>
+      <text x="64"  y="144" textAnchor="end"    fontSize="8.5" fill="#0B1728">Monitor</text>
+      <text x="64"  y="62"  textAnchor="end"    fontSize="8.5" fontWeight="700" fill="#C26A3D">Org struct</text>
+    </g>
+  ),
+
+  ladder: (
+    <g>
+      <line x1="90"  y1="25" x2="90"  y2="185" stroke="#1E3A5F" strokeWidth="3"/>
+      <line x1="210" y1="25" x2="210" y2="185" stroke="#1E3A5F" strokeWidth="3"/>
+      {/* L1–L5 rungs, L4/L5 highlighted as advanced */}
+      <rect x="90" y="162" width="120" height="16" fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.2"/>
+      <text x="150" y="174" textAnchor="middle" fontSize="10" fontWeight="600" fill="#0B1728">L1 — Initial / Ad Hoc</text>
+      <rect x="90" y="132" width="120" height="16" fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.2"/>
+      <text x="150" y="144" textAnchor="middle" fontSize="10" fontWeight="600" fill="#0B1728">L2 — Defined</text>
+      <rect x="90" y="102" width="120" height="16" fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.2"/>
+      <text x="150" y="114" textAnchor="middle" fontSize="10" fontWeight="600" fill="#0B1728">L3 — Established</text>
+      <rect x="90" y="72"  width="120" height="16" fill="#C26A3D" opacity="0.35" stroke="#1E3A5F" strokeWidth="1.2"/>
+      <text x="150" y="84"  textAnchor="middle" fontSize="10" fontWeight="600" fill="#FAF7F2">L4 — Advanced</text>
+      <rect x="90" y="42"  width="120" height="16" fill="#C26A3D" stroke="#1E3A5F" strokeWidth="1.2"/>
+      <text x="150" y="54"  textAnchor="middle" fontSize="10" fontWeight="600" fill="#FAF7F2">L5 — Leading</text>
+      <path d="M 150 25 L 144 34 M 150 25 L 156 34" stroke="#C26A3D" strokeWidth="2" fill="none"/>
+      <text x="170" y="20" fontSize="9" fill="#0B1728" opacity="0.6">maturity</text>
+    </g>
+  ),
+
+  chain: (
+    <g>
+      {/* Five chain links — the middle one is cracked, representing the weakest-link rule */}
+      <ellipse cx="40"  cy="100" rx="22" ry="14" fill="none" stroke="#1E3A5F" strokeWidth="4"/>
+      <ellipse cx="90"  cy="100" rx="22" ry="14" fill="none" stroke="#1E3A5F" strokeWidth="4"/>
+      <ellipse cx="140" cy="100" rx="22" ry="14" fill="none" stroke="#c62828" strokeWidth="3" strokeDasharray="4 3"/>
+      <ellipse cx="190" cy="100" rx="22" ry="14" fill="none" stroke="#1E3A5F" strokeWidth="4"/>
+      <ellipse cx="240" cy="100" rx="22" ry="14" fill="none" stroke="#1E3A5F" strokeWidth="4"/>
+      <path d="M 132 100 L 138 94 L 142 106 L 148 100" stroke="#c62828" strokeWidth="2.5" fill="none"/>
+      <text x="150" y="40" textAnchor="middle" fontSize="12" fontWeight="700" fill="#0B1728">One weak domain</text>
+      <text x="150" y="55" textAnchor="middle" fontSize="12" fontWeight="700" fill="#c62828">caps the whole system</text>
+      <text x="140" y="145" textAnchor="middle" fontSize="9" fill="#c62828">weakest link</text>
+      <text x="150" y="175" textAnchor="middle" fontSize="10" fill="#0B1728" opacity="0.7">minimum-domain rule</text>
+    </g>
+  ),
+
+  committee: (
+    <g>
+      {/* Round AI oversight committee */}
+      <ellipse cx="150" cy="115" rx="70" ry="28" fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.5"/>
+      <text x="150" y="118" textAnchor="middle" fontSize="10" fontWeight="600" fill="#0B1728">AI oversight</text>
+      <text x="150" y="130" textAnchor="middle" fontSize="9" fill="#0B1728" opacity="0.7">committee</text>
+      <circle cx="70"  cy="90"  r="9" fill="#1E3A5F"/>
+      <path d="M 58 104 Q 70 96 82 104" fill="none" stroke="#1E3A5F" strokeWidth="1.5"/>
+      <text x="70" y="77" textAnchor="middle" fontSize="8.5" fill="#0B1728">CMO</text>
+      <circle cx="150" cy="70"  r="9" fill="#1E3A5F"/>
+      <path d="M 138 84 Q 150 76 162 84" fill="none" stroke="#1E3A5F" strokeWidth="1.5"/>
+      <text x="150" y="57" textAnchor="middle" fontSize="8.5" fill="#0B1728">CAIO</text>
+      <circle cx="230" cy="90"  r="9" fill="#1E3A5F"/>
+      <path d="M 218 104 Q 230 96 242 104" fill="none" stroke="#1E3A5F" strokeWidth="1.5"/>
+      <text x="230" y="77" textAnchor="middle" fontSize="8.5" fill="#0B1728">CIO</text>
+      <circle cx="230" cy="140" r="9" fill="#1E3A5F"/>
+      <path d="M 218 154 Q 230 146 242 154" fill="none" stroke="#1E3A5F" strokeWidth="1.5"/>
+      <text x="230" y="127" textAnchor="middle" fontSize="8.5" fill="#0B1728">Ethics</text>
+      <circle cx="150" cy="160" r="9" fill="#1E3A5F"/>
+      <path d="M 138 174 Q 150 166 162 174" fill="none" stroke="#1E3A5F" strokeWidth="1.5"/>
+      <text x="150" y="147" textAnchor="middle" fontSize="8.5" fill="#0B1728">Clin lead</text>
+      <circle cx="70"  cy="140" r="9" fill="#1E3A5F"/>
+      <path d="M 58 154 Q 70 146 82 154" fill="none" stroke="#1E3A5F" strokeWidth="1.5"/>
+      <text x="70" y="127" textAnchor="middle" fontSize="8.5" fill="#0B1728">Data sci</text>
+      <text x="150" y="56" textAnchor="middle" fontSize="12" fontWeight="700" fill="#C26A3D">★</text>
+      <text x="150" y="192" textAnchor="middle" fontSize="9" fill="#0B1728" opacity="0.6">Level 2: clinical + IT • Level 4: executive + subcommittees</text>
+    </g>
   )
 };
 
