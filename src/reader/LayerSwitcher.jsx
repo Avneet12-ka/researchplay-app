@@ -44,26 +44,26 @@ export default function LayerSwitcher({ active, onChange }) {
                 minWidth: 180,
                 borderRadius: 1.5,
                 border: '1.5px solid',
-                borderColor: isActive ? '#1a237e' : '#cfd4dd',
-                backgroundColor: isActive ? '#1a237e' : '#fff',
+                borderColor: isActive ? '#1E3A5F' : '#D8CFBE',
+                backgroundColor: isActive ? '#1E3A5F' : '#fff',
                 color: isActive ? '#fff' : '#37474f',
                 transition: 'all 160ms ease',
                 '&:hover': {
-                  borderColor: '#1a237e',
-                  backgroundColor: isActive ? '#1a237e' : '#eef0f8'
+                  borderColor: '#1E3A5F',
+                  backgroundColor: isActive ? '#1E3A5F' : '#eef0f8'
                 }
               }}
             >
               <Typography
                 variant="caption"
-                sx={{ letterSpacing: '0.12em', fontWeight: 700, color: isActive ? '#c5cae9' : '#9e9e9e' }}
+                sx={{ letterSpacing: '0.12em', fontWeight: 700, color: isActive ? '#D6CDBE' : '#9e9e9e' }}
               >
                 LAYER {l.n}
               </Typography>
               <Typography variant="body1" sx={{ fontWeight: 600, lineHeight: 1.2 }}>
                 {l.label}
               </Typography>
-              <Typography variant="caption" sx={{ color: isActive ? '#c5cae9' : '#78909c' }}>
+              <Typography variant="caption" sx={{ color: isActive ? '#D6CDBE' : '#78909c' }}>
                 {l.hint}
               </Typography>
             </Box>

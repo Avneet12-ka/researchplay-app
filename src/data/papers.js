@@ -96,7 +96,7 @@ export const papers = [
           unit: '%',
           max: 12,
           bars: [
-            { label: 'Alert', value: 9.2, color: '#1a237e' },
+            { label: 'Alert', value: 9.2, color: '#1E3A5F' },
             { label: 'Usual care', value: 9.1, color: '#9e9e9e' }
           ]
         }
@@ -116,7 +116,7 @@ export const papers = [
           PPI: {
             note: 'Proton pump inhibitor at admission',
             bars: [
-              { label: 'Likely benefit — alert', value: 6.8, color: '#1a237e' },
+              { label: 'Likely benefit — alert', value: 6.8, color: '#1E3A5F' },
               { label: 'Likely benefit — usual care', value: 9.4, color: '#9e9e9e' },
               { label: 'Likely harm — alert', value: 11.9, color: '#c62828' },
               { label: 'Likely harm — usual care', value: 9.6, color: '#9e9e9e' }
@@ -125,7 +125,7 @@ export const papers = [
           NSAID: {
             note: 'NSAID within 48h of admission',
             bars: [
-              { label: 'Likely benefit — alert', value: 5.2, color: '#1a237e' },
+              { label: 'Likely benefit — alert', value: 5.2, color: '#1E3A5F' },
               { label: 'Likely benefit — usual care', value: 8.7, color: '#9e9e9e' },
               { label: 'Likely harm — alert', value: 10.1, color: '#c62828' },
               { label: 'Likely harm — usual care', value: 8.8, color: '#9e9e9e' }
@@ -134,7 +134,7 @@ export const papers = [
           RAASi: {
             note: 'ACE inhibitor or ARB at admission',
             bars: [
-              { label: 'Likely benefit — alert', value: 7.3, color: '#1a237e' },
+              { label: 'Likely benefit — alert', value: 7.3, color: '#1E3A5F' },
               { label: 'Likely benefit — usual care', value: 10.8, color: '#9e9e9e' },
               { label: 'Likely harm — alert', value: 12.4, color: '#c62828' },
               { label: 'Likely harm — usual care', value: 10.2, color: '#9e9e9e' }
@@ -429,15 +429,15 @@ export const papers = [
           'By age': {
             note: 'Age band — proportion addicted within band',
             bars: [
-              { label: '11–19 yrs', value: 56.3, color: '#1a237e' },
-              { label: '20–30 yrs', value: 69.8, color: '#1a237e' },
-              { label: '>30 yrs', value: 78.4, color: '#1a237e' }
+              { label: '11–19 yrs', value: 56.3, color: '#1E3A5F' },
+              { label: '20–30 yrs', value: 69.8, color: '#1E3A5F' },
+              { label: '>30 yrs', value: 78.4, color: '#1E3A5F' }
             ]
           },
           'By gender': {
             note: 'Gender — proportion addicted',
             bars: [
-              { label: 'Male', value: 69.2, color: '#1a237e' },
+              { label: 'Male', value: 69.2, color: '#1E3A5F' },
               { label: 'Female', value: 14.8, color: '#9e9e9e' }
             ]
           },
@@ -446,7 +446,7 @@ export const papers = [
             bars: [
               { label: 'Illiterate / primary', value: 85.5, color: '#c62828' },
               { label: 'Secondary', value: 74.6, color: '#c62828' },
-              { label: 'Above secondary', value: 46.1, color: '#1a237e' }
+              { label: 'Above secondary', value: 46.1, color: '#1E3A5F' }
             ]
           }
         },

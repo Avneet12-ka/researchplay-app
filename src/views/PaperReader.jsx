@@ -40,10 +40,10 @@ export default function PaperReader() {
           All papers
         </Button>
         <Paper elevation={0} sx={{ p: { xs: 2.5, md: 4 }, backgroundColor: '#fff', border: '1px solid #e6e9ef' }}>
-          <Typography variant="overline" sx={{ color: '#1a237e', letterSpacing: '0.14em', fontWeight: 700 }}>
+          <Typography variant="overline" sx={{ color: '#1E3A5F', letterSpacing: '0.14em', fontWeight: 700 }}>
             Interactive paper
           </Typography>
-          <Typography variant="h4" sx={{ fontFamily: 'Roboto Slab, serif', color: '#0f154a', mt: 0.5 }}>
+          <Typography variant="h4" sx={{ fontFamily: 'Roboto Slab, serif', color: '#0B1728', mt: 0.5 }}>
             {paper.title}
           </Typography>
           {paper.subtitle && (

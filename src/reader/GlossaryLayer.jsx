@@ -20,9 +20,9 @@ function GlossaryTerm({ term, children, definition }) {
       <Box
         component="span"
         sx={{
-          borderBottom: '2px dotted #1a237e',
+          borderBottom: '2px dotted #1E3A5F',
           cursor: 'help',
-          color: '#1a237e',
+          color: '#1E3A5F',
           fontWeight: 500
         }}
       >
@@ -49,7 +49,7 @@ export default function GlossaryLayer({ paper }) {
   return (
     <Box>
       <Typography variant="body2" sx={{ color: '#607d8b', mb: 3, maxWidth: 720 }}>
-        Hover any <Box component="span" sx={{ borderBottom: '2px dotted #1a237e', color: '#1a237e', fontWeight: 500 }}>dotted term</Box> for a plain-language definition. Margin notes flag what a
+        Hover any <Box component="span" sx={{ borderBottom: '2px dotted #1E3A5F', color: '#1E3A5F', fontWeight: 500 }}>dotted term</Box> for a plain-language definition. Margin notes flag what a
         sentence is actually claiming. Only the abstract and first two results sections are fully annotated; the pattern is
         the point.
       </Typography>
@@ -64,7 +64,7 @@ export default function GlossaryLayer({ paper }) {
         <Box>
           {paper.sections.map((section, si) => (
             <Box key={si} sx={{ mb: 4 }}>
-              <Typography variant="h5" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1a237e', mb: 2 }}>
+              <Typography variant="h5" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1E3A5F', mb: 2 }}>
                 {section.heading}
               </Typography>
               {section.paragraphs.map((para) => (
@@ -81,11 +81,11 @@ export default function GlossaryLayer({ paper }) {
                       component="span"
                       sx={{
                         display: { xs: 'block', md: 'none' },
-                        mt: 1.5, p: 1.5, borderLeft: '3px solid #1a237e',
-                        backgroundColor: '#f3f4f9', borderRadius: '0 4px 4px 0'
+                        mt: 1.5, p: 1.5, borderLeft: '3px solid #1E3A5F',
+                        backgroundColor: '#EDE5D7', borderRadius: '0 4px 4px 0'
                       }}
                     >
-                      <Typography variant="caption" sx={{ color: '#1a237e', fontWeight: 700 }}>
+                      <Typography variant="caption" sx={{ color: '#1E3A5F', fontWeight: 700 }}>
                         MARGIN NOTE
                       </Typography>
                       <Typography variant="body2" sx={{ color: '#37474f', mt: 0.5 }}>
@@ -107,12 +107,12 @@ export default function GlossaryLayer({ paper }) {
               sx={{
                 p: 2,
                 mb: 2,
-                backgroundColor: '#f3f4f9',
-                borderLeft: '3px solid #1a237e',
+                backgroundColor: '#EDE5D7',
+                borderLeft: '3px solid #1E3A5F',
                 borderRadius: '0 4px 4px 0'
               }}
             >
-              <Typography variant="caption" sx={{ color: '#1a237e', fontWeight: 700, letterSpacing: '0.08em' }}>
+              <Typography variant="caption" sx={{ color: '#1E3A5F', fontWeight: 700, letterSpacing: '0.08em' }}>
                 MARGIN NOTE
               </Typography>
               <Typography variant="body2" sx={{ color: '#37474f', mt: 0.5, lineHeight: 1.6 }}>
@@ -123,8 +123,8 @@ export default function GlossaryLayer({ paper }) {
                 href={`#${id}`}
                 sx={{
                   display: 'inline-block',
-                  mt: 1, fontSize: 12, color: '#1a237e',
-                  textDecoration: 'none', borderBottom: '1px dotted #1a237e'
+                  mt: 1, fontSize: 12, color: '#1E3A5F',
+                  textDecoration: 'none', borderBottom: '1px dotted #1E3A5F'
                 }}
               >
                 jump to sentence ↓

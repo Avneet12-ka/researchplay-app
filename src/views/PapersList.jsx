@@ -14,9 +14,9 @@ import { papers as seedPapers } from '../data/papers';
 
 function InteractiveCard({ paper }) {
   return (
-    <Paper elevation={2} sx={{ p: 3, borderTop: '4px solid #1a237e', height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <Chip label="4 layers" size="small" sx={{ alignSelf: 'flex-start', backgroundColor: '#e8eaf6', color: '#1a237e', fontWeight: 600 }} />
-      <Typography variant="h6" sx={{ fontFamily: 'Roboto Slab, serif', mt: 1.5, color: '#0f154a' }}>
+    <Paper elevation={2} sx={{ p: 3, borderTop: '4px solid #1E3A5F', height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <Chip label="4 layers" size="small" sx={{ alignSelf: 'flex-start', backgroundColor: '#F3E4D8', color: '#1E3A5F', fontWeight: 600 }} />
+      <Typography variant="h6" sx={{ fontFamily: 'Roboto Slab, serif', mt: 1.5, color: '#0B1728' }}>
         {paper.title}
       </Typography>
       <Typography variant="body2" sx={{ color: '#607d8b', mt: 0.5 }}>
@@ -62,7 +62,7 @@ export default function PapersList() {
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 6 }}>
-      <Typography variant="h4" sx={{ fontFamily: 'Roboto Slab, serif', color: '#0f154a', mb: 1 }}>
+      <Typography variant="h4" sx={{ fontFamily: 'Roboto Slab, serif', color: '#0B1728', mb: 1 }}>
         Papers
       </Typography>
       <Typography variant="body1" sx={{ color: '#607d8b', mb: 4, maxWidth: 720 }}>
@@ -71,7 +71,7 @@ export default function PapersList() {
       </Typography>
 
       <Box sx={{ mb: 5 }}>
-        <Typography variant="overline" sx={{ color: '#1a237e', letterSpacing: '0.14em', fontWeight: 700 }}>
+        <Typography variant="overline" sx={{ color: '#1E3A5F', letterSpacing: '0.14em', fontWeight: 700 }}>
           Ready to read
         </Typography>
         <Grid container spacing={3} sx={{ mt: 0.5 }}>

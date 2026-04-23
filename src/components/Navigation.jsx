@@ -12,7 +12,7 @@ export default function Navigation() {
   const isActive = (to) => (to === '/' ? pathname === '/' : pathname.startsWith(to));
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#1a237e' }}>
+    <AppBar position="static" sx={{ backgroundColor: '#1E3A5F' }}>
       <Toolbar>
         <Typography
           component={Link}
@@ -36,8 +36,8 @@ export default function Navigation() {
               component={Link}
               to={l.to}
               sx={{
-                backgroundColor: isActive(l.to) ? '#283593' : 'transparent',
-                '&:hover': { backgroundColor: '#283593' }
+                backgroundColor: isActive(l.to) ? '#14263F' : 'transparent',
+                '&:hover': { backgroundColor: '#14263F' }
               }}
             >
               {l.label}
@@ -49,8 +49,8 @@ export default function Navigation() {
             to="/login"
             sx={{
               ml: 1,
-              backgroundColor: '#4caf50',
-              '&:hover': { backgroundColor: '#388e3c' }
+              backgroundColor: '#C26A3D',
+              '&:hover': { backgroundColor: '#9E4E25' }
             }}
           >
             Login

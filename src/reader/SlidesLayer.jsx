@@ -8,7 +8,7 @@ function SlideBody({ slide }) {
   if (slide.kind === 'title') {
     return (
       <Box sx={{ py: 4 }}>
-        <Typography variant="h3" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1a237e', mb: 2 }}>
+        <Typography variant="h3" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1E3A5F', mb: 2 }}>
           {slide.title}
         </Typography>
         <Typography variant="h6" sx={{ color: '#37474f', maxWidth: 620, lineHeight: 1.5, fontWeight: 400 }}>
@@ -20,7 +20,7 @@ function SlideBody({ slide }) {
   if (slide.kind === 'headline') {
     return (
       <Box sx={{ py: 4, textAlign: 'center' }}>
-        <Typography variant="h1" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1a237e', fontSize: 128, fontWeight: 800 }}>
+        <Typography variant="h1" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1E3A5F', fontSize: 128, fontWeight: 800 }}>
           {slide.title}
         </Typography>
         <Typography variant="h6" sx={{ color: '#37474f', maxWidth: 620, mx: 'auto', mt: 1 }}>
@@ -32,7 +32,7 @@ function SlideBody({ slide }) {
   if (slide.kind === 'chart') {
     return (
       <Box>
-        <Typography variant="h4" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1a237e', mb: 1 }}>
+        <Typography variant="h4" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1E3A5F', mb: 1 }}>
           {slide.title}
         </Typography>
         <Typography variant="body1" sx={{ color: '#37474f', mb: 4, maxWidth: 680 }}>
@@ -49,7 +49,7 @@ function SlideBody({ slide }) {
   }
   return (
     <Box>
-      <Typography variant="h4" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1a237e', mb: 2 }}>
+      <Typography variant="h4" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1E3A5F', mb: 2 }}>
         {slide.title}
       </Typography>
       <Typography variant="body1" sx={{ color: '#37474f', maxWidth: 680, lineHeight: 1.7 }}>
@@ -65,7 +65,7 @@ function CohortChartSlide({ slide }) {
   const data = slide.cohorts[cohort];
   return (
     <Box>
-      <Typography variant="h4" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1a237e', mb: 1 }}>
+      <Typography variant="h4" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1E3A5F', mb: 1 }}>
         {slide.title}
       </Typography>
       <Typography variant="body1" sx={{ color: '#37474f', mb: 3, maxWidth: 720 }}>
@@ -134,7 +134,7 @@ export default function SlidesLayer({ slides }) {
               onClick={() => setI(idx)}
               sx={{
                 width: 10, height: 10, borderRadius: '50%',
-                backgroundColor: idx === i ? '#1a237e' : '#cfd8dc',
+                backgroundColor: idx === i ? '#1E3A5F' : '#cfd8dc',
                 cursor: 'pointer',
                 transition: 'background-color 200ms'
               }}

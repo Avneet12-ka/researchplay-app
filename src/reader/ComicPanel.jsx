@@ -4,14 +4,14 @@ import { Box, Paper, Typography } from '@mui/material';
 const ART = {
   alert: (
     <g>
-      <rect x="20" y="30" width="260" height="140" rx="10" fill="#eceff1" stroke="#1a237e" strokeWidth="2" />
-      <rect x="40" y="55" width="180" height="12" rx="3" fill="#1a237e" />
+      <rect x="20" y="30" width="260" height="140" rx="10" fill="#eceff1" stroke="#1E3A5F" strokeWidth="2" />
+      <rect x="40" y="55" width="180" height="12" rx="3" fill="#1E3A5F" />
       <rect x="40" y="78" width="220" height="8" rx="3" fill="#90a4ae" />
       <rect x="40" y="94" width="160" height="8" rx="3" fill="#90a4ae" />
       <circle cx="245" cy="62" r="16" fill="#c62828" />
       <text x="245" y="67" textAnchor="middle" fill="#fff" fontSize="18" fontWeight="700">!</text>
-      <rect x="40" y="125" width="70" height="24" rx="4" fill="#1a237e" />
-      <rect x="120" y="125" width="70" height="24" rx="4" fill="#fff" stroke="#1a237e" strokeWidth="2" />
+      <rect x="40" y="125" width="70" height="24" rx="4" fill="#1E3A5F" />
+      <rect x="120" y="125" width="70" height="24" rx="4" fill="#fff" stroke="#1E3A5F" strokeWidth="2" />
     </g>
   ),
   patient: (
@@ -28,11 +28,11 @@ const ART = {
   ),
   trial: (
     <g>
-      <circle cx="150" cy="50" r="18" fill="#1a237e" />
-      <path d="M150 68 L90 110 M150 68 L210 110" stroke="#1a237e" strokeWidth="2" />
-      <rect x="50" y="110" width="80" height="60" rx="6" fill="#e8eaf6" stroke="#1a237e" />
-      <text x="90" y="135" textAnchor="middle" fill="#1a237e" fontSize="11" fontWeight="600">ALERT</text>
-      <text x="90" y="152" textAnchor="middle" fill="#1a237e" fontSize="10">arm</text>
+      <circle cx="150" cy="50" r="18" fill="#1E3A5F" />
+      <path d="M150 68 L90 110 M150 68 L210 110" stroke="#1E3A5F" strokeWidth="2" />
+      <rect x="50" y="110" width="80" height="60" rx="6" fill="#F3E4D8" stroke="#1E3A5F" />
+      <text x="90" y="135" textAnchor="middle" fill="#1E3A5F" fontSize="11" fontWeight="600">ALERT</text>
+      <text x="90" y="152" textAnchor="middle" fill="#1E3A5F" fontSize="10">arm</text>
       <rect x="170" y="110" width="80" height="60" rx="6" fill="#f5f5f5" stroke="#607d8b" />
       <text x="210" y="135" textAnchor="middle" fill="#455a64" fontSize="11" fontWeight="600">USUAL</text>
       <text x="210" y="152" textAnchor="middle" fill="#455a64" fontSize="10">care</text>
@@ -42,7 +42,7 @@ const ART = {
     <g>
       <line x1="40" y1="160" x2="260" y2="160" stroke="#455a64" strokeWidth="1.5" />
       <line x1="40" y1="40" x2="40" y2="160" stroke="#455a64" strokeWidth="1.5" />
-      <polyline points="40,120 80,118 120,115 160,113 200,112 240,112" fill="none" stroke="#1a237e" strokeWidth="3" />
+      <polyline points="40,120 80,118 120,115 160,113 200,112 240,112" fill="none" stroke="#1E3A5F" strokeWidth="3" />
       <polyline points="40,122 80,119 120,116 160,114 200,113 240,113" fill="none" stroke="#9e9e9e" strokeWidth="3" strokeDasharray="4 4" />
       <text x="150" y="30" textAnchor="middle" fill="#455a64" fontSize="11">No separation</text>
     </g>
@@ -60,19 +60,19 @@ const ART = {
   ),
   model: (
     <g>
-      <rect x="30" y="60" width="60" height="80" rx="6" fill="#e8eaf6" stroke="#1a237e" />
-      <text x="60" y="105" textAnchor="middle" fill="#1a237e" fontSize="10">phenotype</text>
-      <path d="M90 100 L130 100" stroke="#1a237e" strokeWidth="2" markerEnd="url(#arrow)" />
-      <rect x="130" y="60" width="80" height="80" rx="6" fill="#1a237e" />
+      <rect x="30" y="60" width="60" height="80" rx="6" fill="#F3E4D8" stroke="#1E3A5F" />
+      <text x="60" y="105" textAnchor="middle" fill="#1E3A5F" fontSize="10">phenotype</text>
+      <path d="M90 100 L130 100" stroke="#1E3A5F" strokeWidth="2" markerEnd="url(#arrow)" />
+      <rect x="130" y="60" width="80" height="80" rx="6" fill="#1E3A5F" />
       <text x="170" y="95" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="600">model</text>
       <text x="170" y="115" textAnchor="middle" fill="#fff" fontSize="9">trained on</text>
       <text x="170" y="128" textAnchor="middle" fill="#fff" fontSize="9">ELAIA-1</text>
-      <path d="M210 100 L250 100" stroke="#1a237e" strokeWidth="2" markerEnd="url(#arrow)" />
+      <path d="M210 100 L250 100" stroke="#1E3A5F" strokeWidth="2" markerEnd="url(#arrow)" />
       <rect x="250" y="70" width="30" height="60" rx="4" fill="#c8e6c9" />
       <rect x="250" y="100" width="30" height="30" rx="4" fill="#ffcdd2" />
       <defs>
         <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-          <path d="M0,0 L10,5 L0,10 z" fill="#1a237e" />
+          <path d="M0,0 L10,5 L0,10 z" fill="#1E3A5F" />
         </marker>
       </defs>
     </g>
@@ -80,7 +80,7 @@ const ART = {
   outcome: (
     <g>
       <line x1="40" y1="160" x2="260" y2="160" stroke="#455a64" strokeWidth="1.5" />
-      <rect x="70" y="90" width="30" height="70" fill="#1a237e" />
+      <rect x="70" y="90" width="30" height="70" fill="#1E3A5F" />
       <rect x="110" y="70" width="30" height="90" fill="#9e9e9e" />
       <rect x="170" y="55" width="30" height="105" fill="#c62828" />
       <rect x="210" y="75" width="30" height="85" fill="#9e9e9e" />
@@ -93,7 +93,7 @@ const ART = {
   ),
   lives: (
     <g>
-      <text x="150" y="85" textAnchor="middle" fill="#1a237e" fontSize="48" fontWeight="800">43</text>
+      <text x="150" y="85" textAnchor="middle" fill="#1E3A5F" fontSize="48" fontWeight="800">43</text>
       <text x="150" y="115" textAnchor="middle" fill="#455a64" fontSize="14">deaths potentially</text>
       <text x="150" y="135" textAnchor="middle" fill="#455a64" fontSize="14">preventable</text>
       <text x="150" y="160" textAnchor="middle" fill="#9e9e9e" fontSize="10">in external cohorts (counterfactual)</text>
@@ -108,19 +108,19 @@ const ART = {
             cx={40 + col * 20}
             cy={55 + row * 18}
             r={5}
-            fill={(row * 12 + col) % 4 === 0 ? '#1a237e' : '#c5cae9'}
+            fill={(row * 12 + col) % 4 === 0 ? '#1E3A5F' : '#D6CDBE'}
           />
         ))
       )}
-      <text x="150" y="40" textAnchor="middle" fill="#1a237e" fontSize="13" fontWeight="700">230,000 opioid dependents</text>
+      <text x="150" y="40" textAnchor="middle" fill="#1E3A5F" fontSize="13" fontWeight="700">230,000 opioid dependents</text>
       <text x="150" y="185" textAnchor="middle" fill="#607d8b" fontSize="10">76% aged 18–35 (PODS 2015)</text>
     </g>
   ),
   map: (
     <g>
       <rect x="20" y="40" width="260" height="130" rx="4" fill="#f5f5f5" stroke="#cfd8dc" />
-      <path d="M90 80 Q105 65 130 70 Q155 60 165 80 L170 110 Q150 125 115 120 Q95 115 90 95 Z" fill="#e8eaf6" stroke="#1a237e" strokeWidth="1.5" />
-      <text x="130" y="100" textAnchor="middle" fill="#1a237e" fontSize="11" fontWeight="700">PUNJAB</text>
+      <path d="M90 80 Q105 65 130 70 Q155 60 165 80 L170 110 Q150 125 115 120 Q95 115 90 95 Z" fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.5" />
+      <text x="130" y="100" textAnchor="middle" fill="#1E3A5F" fontSize="11" fontWeight="700">PUNJAB</text>
       <circle cx="55" cy="75" r="14" fill="#ffecb3" stroke="#ff8f00" />
       <text x="55" y="78" textAnchor="middle" fill="#ff8f00" fontSize="8" fontWeight="700">Golden</text>
       <text x="55" y="88" textAnchor="middle" fill="#ff8f00" fontSize="8" fontWeight="700">Crescent</text>
@@ -133,11 +133,11 @@ const ART = {
   ),
   pill: (
     <g>
-      <rect x="80" y="70" width="140" height="50" rx="25" fill="#fff" stroke="#1a237e" strokeWidth="3" />
-      <rect x="80" y="70" width="70" height="50" rx="25" fill="#1a237e" />
-      <line x1="150" y1="70" x2="150" y2="120" stroke="#1a237e" strokeWidth="3" />
+      <rect x="80" y="70" width="140" height="50" rx="25" fill="#fff" stroke="#1E3A5F" strokeWidth="3" />
+      <rect x="80" y="70" width="70" height="50" rx="25" fill="#1E3A5F" />
+      <line x1="150" y1="70" x2="150" y2="120" stroke="#1E3A5F" strokeWidth="3" />
       <text x="115" y="100" textAnchor="middle" fill="#fff" fontSize="11" fontWeight="700">BUP</text>
-      <text x="185" y="100" textAnchor="middle" fill="#1a237e" fontSize="11" fontWeight="700">NX</text>
+      <text x="185" y="100" textAnchor="middle" fill="#1E3A5F" fontSize="11" fontWeight="700">NX</text>
       <text x="150" y="150" textAnchor="middle" fill="#455a64" fontSize="11">buprenorphine + naloxone</text>
       <text x="150" y="168" textAnchor="middle" fill="#9e9e9e" fontSize="9">ceiling effect · long-acting · low overdose risk</text>
     </g>
@@ -145,11 +145,11 @@ const ART = {
   phases: (
     <g>
       <line x1="30" y1="110" x2="270" y2="110" stroke="#cfd8dc" strokeWidth="2" />
-      <circle cx="60" cy="110" r="14" fill="#1a237e" />
+      <circle cx="60" cy="110" r="14" fill="#1E3A5F" />
       <text x="60" y="114" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700">1</text>
-      <text x="60" y="140" textAnchor="middle" fill="#1a237e" fontSize="10" fontWeight="600">Induction</text>
+      <text x="60" y="140" textAnchor="middle" fill="#1E3A5F" fontSize="10" fontWeight="600">Induction</text>
       <text x="60" y="155" textAnchor="middle" fill="#607d8b" fontSize="8">days</text>
-      <circle cx="150" cy="110" r="18" fill="#4caf50" />
+      <circle cx="150" cy="110" r="18" fill="#C26A3D" />
       <text x="150" y="114" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="700">2</text>
       <text x="150" y="144" textAnchor="middle" fill="#2e7d32" fontSize="10" fontWeight="600">Maintenance</text>
       <text x="150" y="159" textAnchor="middle" fill="#607d8b" fontSize="8">1–2 years</text>
@@ -157,13 +157,13 @@ const ART = {
       <text x="240" y="114" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="700">3</text>
       <text x="240" y="140" textAnchor="middle" fill="#455a64" fontSize="10" fontWeight="600">Termination</text>
       <text x="240" y="155" textAnchor="middle" fill="#607d8b" fontSize="8">2–3 months</text>
-      <text x="150" y="50" textAnchor="middle" fill="#1a237e" fontSize="12" fontWeight="700">Stages of OST</text>
+      <text x="150" y="50" textAnchor="middle" fill="#1E3A5F" fontSize="12" fontWeight="700">Stages of OST</text>
     </g>
   ),
   calendar: (
     <g>
-      <rect x="60" y="45" width="180" height="130" rx="6" fill="#fff" stroke="#1a237e" strokeWidth="2" />
-      <rect x="60" y="45" width="180" height="28" rx="6" fill="#1a237e" />
+      <rect x="60" y="45" width="180" height="130" rx="6" fill="#fff" stroke="#1E3A5F" strokeWidth="2" />
+      <rect x="60" y="45" width="180" height="28" rx="6" fill="#1E3A5F" />
       <text x="150" y="64" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="700">14-DAY MAX</text>
       {Array.from({ length: 14 }).map((_, i) => (
         <rect
@@ -208,7 +208,7 @@ const ART = {
   ),
   clock: (
     <g>
-      <text x="150" y="35" textAnchor="middle" fill="#1a237e" fontSize="12" fontWeight="700">Follow-up interval</text>
+      <text x="150" y="35" textAnchor="middle" fill="#1E3A5F" fontSize="12" fontWeight="700">Follow-up interval</text>
       <rect x="30" y="70" width="70" height="80" rx="6" fill="#e8f5e9" stroke="#2e7d32" />
       <text x="65" y="95" textAnchor="middle" fill="#2e7d32" fontSize="11" fontWeight="700">HTN / DM</text>
       <text x="65" y="120" textAnchor="middle" fill="#2e7d32" fontSize="18" fontWeight="800">2–3</text>
@@ -228,7 +228,7 @@ const ART = {
       <line x1="150" y1="40" x2="150" y2="160" stroke="#455a64" strokeWidth="3" />
       <line x1="70" y1="70" x2="230" y2="70" stroke="#455a64" strokeWidth="3" />
       <polygon points="150,160 130,175 170,175" fill="#455a64" />
-      <rect x="45" y="85" width="60" height="30" rx="3" fill="#1a237e" />
+      <rect x="45" y="85" width="60" height="30" rx="3" fill="#1E3A5F" />
       <text x="75" y="104" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="700">Evidence</text>
       <rect x="195" y="85" width="60" height="30" rx="3" fill="#c62828" />
       <text x="225" y="104" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="700">14-day SOP</text>
@@ -247,7 +247,7 @@ export default function ComicPanel({ panel, index }) {
         flexDirection: 'column',
         gap: 1.5,
         height: '100%',
-        borderTop: '4px solid #1a237e'
+        borderTop: '4px solid #1E3A5F'
       }}
     >
       <Typography variant="caption" sx={{ color: '#9e9e9e', letterSpacing: '0.1em', fontWeight: 600 }}>

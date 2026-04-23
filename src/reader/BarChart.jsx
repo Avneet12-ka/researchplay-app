@@ -30,7 +30,7 @@ export default function BarChart({ bars, max, unit = '%' }) {
                 }}
               />
             </Box>
-            <Typography variant="body2" sx={{ fontVariantNumeric: 'tabular-nums', color: '#1a237e', fontWeight: 600 }}>
+            <Typography variant="body2" sx={{ fontVariantNumeric: 'tabular-nums', color: '#1E3A5F', fontWeight: 600 }}>
               {b.value}{unit}
             </Typography>
           </Box>

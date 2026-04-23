@@ -14,11 +14,11 @@ const LENS_ICON = {
 
 function GovernanceCard({ card }) {
   return (
-    <Paper elevation={2} sx={{ p: { xs: 3, md: 4 }, borderTop: '4px solid #1a237e', height: '100%' }}>
+    <Paper elevation={2} sx={{ p: { xs: 3, md: 4 }, borderTop: '4px solid #1E3A5F', height: '100%' }}>
       <Typography variant="overline" sx={{ color: '#90a4ae', letterSpacing: '0.12em' }}>
         Discussion card
       </Typography>
-      <Typography variant="h5" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1a237e', mt: 0.5, mb: 1.5 }}>
+      <Typography variant="h5" sx={{ fontFamily: 'Roboto Slab, serif', color: '#1E3A5F', mt: 0.5, mb: 1.5 }}>
         {card.title}
       </Typography>
       <Typography variant="body2" sx={{ color: '#455a64', mb: 3, lineHeight: 1.6 }}>
@@ -30,15 +30,15 @@ function GovernanceCard({ card }) {
             <Box
               sx={{
                 p: 2, height: '100%', borderRadius: 1,
-                backgroundColor: '#f6f7fb',
-                borderLeft: '3px solid #1a237e'
+                backgroundColor: '#FAF7F2',
+                borderLeft: '3px solid #1E3A5F'
               }}
             >
               <Chip
                 icon={LENS_ICON[l.lens]}
                 label={l.lens}
                 size="small"
-                sx={{ backgroundColor: '#1a237e', color: '#fff', mb: 1, '& .MuiChip-icon': { color: '#fff' } }}
+                sx={{ backgroundColor: '#1E3A5F', color: '#fff', mb: 1, '& .MuiChip-icon': { color: '#fff' } }}
               />
               <Typography variant="body2" sx={{ color: '#263238', lineHeight: 1.6 }}>
                 {l.body}
@@ -49,9 +49,9 @@ function GovernanceCard({ card }) {
       </Grid>
       <Divider sx={{ my: 3 }} />
       <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'flex-start' }}>
-        <QuestionIcon sx={{ color: '#1a237e', mt: 0.25 }} />
+        <QuestionIcon sx={{ color: '#1E3A5F', mt: 0.25 }} />
         <Box>
-          <Typography variant="caption" sx={{ color: '#1a237e', fontWeight: 700, letterSpacing: '0.08em' }}>
+          <Typography variant="caption" sx={{ color: '#1E3A5F', fontWeight: 700, letterSpacing: '0.08em' }}>
             DISCUSSION PROMPT
           </Typography>
           <Typography variant="body1" sx={{ color: '#263238', mt: 0.5, fontStyle: 'italic' }}>
