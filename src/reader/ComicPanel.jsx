@@ -234,6 +234,149 @@ const ART = {
       <text x="225" y="104" textAnchor="middle" fill="#fff" fontSize="9" fontWeight="700">14-day SOP</text>
       <text x="150" y="30" textAnchor="middle" fill="#455a64" fontSize="11" fontWeight="700">Right to life (Art. 21)</text>
     </g>
+  ),
+
+  // ---- keys added for mmi-perceptions ----
+
+  samples: (
+    <g>
+      {/* Sample tray being handed over */}
+      <rect x="40" y="90" width="100" height="60" rx="4" fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1.5" />
+      <circle cx="60" cy="110" r="6" fill="#C26A3D" />
+      <circle cx="80" cy="110" r="6" fill="#2e7d32" />
+      <circle cx="100" cy="110" r="6" fill="#c62828" />
+      <circle cx="120" cy="110" r="6" fill="#ff8f00" />
+      <circle cx="60" cy="130" r="6" fill="#9e9e9e" />
+      <circle cx="80" cy="130" r="6" fill="#1E3A5F" />
+      <circle cx="100" cy="130" r="6" fill="#C26A3D" />
+      <circle cx="120" cy="130" r="6" fill="#2e7d32" />
+      {/* Left figure — rep */}
+      <circle cx="30" cy="70" r="12" fill="#1E3A5F" />
+      <rect x="18" y="82" width="24" height="28" fill="#1E3A5F" />
+      <rect x="24" y="110" width="4" height="18" fill="#0B1728" />
+      <rect x="32" y="110" width="4" height="18" fill="#0B1728" />
+      <rect x="20" y="94" width="20" height="4" fill="#FAF7F2" />
+      <text x="30" y="62" textAnchor="middle" fontSize="8" fill="#0B1728" fontFamily="ui-sans-serif,system-ui">rep</text>
+      {/* Right figure — doctor with white coat */}
+      <circle cx="170" cy="70" r="12" fill="#C26A3D" />
+      <rect x="158" y="82" width="24" height="28" fill="#FAF7F2" stroke="#1E3A5F" strokeWidth="1" />
+      <rect x="164" y="110" width="4" height="18" fill="#0B1728" />
+      <rect x="172" y="110" width="4" height="18" fill="#0B1728" />
+      <text x="170" y="62" textAnchor="middle" fontSize="8" fill="#0B1728" fontFamily="ui-sans-serif,system-ui">doctor</text>
+      {/* Exchange arrow */}
+      <path d="M50 105 L150 105" stroke="#1E3A5F" strokeWidth="1.5" strokeDasharray="3,2" />
+      <polygon points="150,105 144,102 144,108" fill="#1E3A5F" />
+    </g>
+  ),
+
+  rulebook: (
+    <g>
+      <rect x="60" y="40" width="90" height="120" rx="3" fill="#1E3A5F" />
+      <rect x="66" y="46" width="78" height="108" fill="#FAF7F2" />
+      <rect x="60" y="40" width="4" height="120" fill="#0B1728" />
+      <text x="105" y="70" textAnchor="middle" fontSize="9" fill="#1E3A5F" fontFamily="ui-sans-serif,system-ui" fontWeight="600">MMA Code</text>
+      <text x="105" y="82" textAnchor="middle" fontSize="7" fill="#1E3A5F" fontFamily="ui-sans-serif,system-ui">of Professional</text>
+      <text x="105" y="92" textAnchor="middle" fontSize="7" fill="#1E3A5F" fontFamily="ui-sans-serif,system-ui">Conduct · 2019</text>
+      <line x1="72" y1="108" x2="138" y2="108" stroke="#9e9e9e" strokeWidth="0.8" />
+      <line x1="72" y1="118" x2="138" y2="118" stroke="#9e9e9e" strokeWidth="0.8" />
+      <line x1="72" y1="128" x2="128" y2="128" stroke="#9e9e9e" strokeWidth="0.8" />
+      <line x1="72" y1="138" x2="138" y2="138" stroke="#9e9e9e" strokeWidth="0.8" />
+      <rect x="165" y="50" width="120" height="38" rx="6" fill="#C26A3D" />
+      <polygon points="165,72 155,78 165,82" fill="#C26A3D" />
+      <text x="225" y="68" textAnchor="middle" fontSize="11" fill="#FAF7F2" fontFamily="ui-sans-serif,system-ui" fontWeight="600">Only 6%</text>
+      <text x="225" y="81" textAnchor="middle" fontSize="9" fill="#FAF7F2" fontFamily="ui-sans-serif,system-ui">had heard of it</text>
+    </g>
+  ),
+
+  stat: (
+    <g>
+      <rect x="40" y="168" width="40" height="12" fill="#c62828" />
+      <text x="60" y="160" textAnchor="middle" fontSize="14" fill="#0B1728" fontFamily="ui-sans-serif,system-ui" fontWeight="700">6%</text>
+      <text x="60" y="193" textAnchor="middle" fontSize="8" fill="#0B1728" fontFamily="ui-sans-serif,system-ui">knew rules</text>
+      <rect x="130" y="100" width="40" height="80" fill="#1E3A5F" />
+      <text x="150" y="92" textAnchor="middle" fontSize="14" fill="#0B1728" fontFamily="ui-sans-serif,system-ui" fontWeight="700">40%</text>
+      <text x="150" y="193" textAnchor="middle" fontSize="8" fill="#0B1728" fontFamily="ui-sans-serif,system-ui">knew they interact</text>
+      <rect x="220" y="12" width="40" height="168" fill="#C26A3D" />
+      <text x="240" y="10" textAnchor="middle" fontSize="14" fill="#0B1728" fontFamily="ui-sans-serif,system-ui" fontWeight="700">84%</text>
+      <text x="240" y="193" textAnchor="middle" fontSize="8" fill="#0B1728" fontFamily="ui-sans-serif,system-ui">endorsed samples</text>
+      <line x1="20" y1="181" x2="280" y2="181" stroke="#0B1728" strokeWidth="1" />
+    </g>
+  ),
+
+  compare: (
+    <g>
+      {/* Left — undergraduate / or left-hand comparator (HAIRA reuses for radiology vs hospital) */}
+      <circle cx="75" cy="70" r="14" fill="#C26A3D" />
+      <rect x="63" y="84" width="24" height="32" fill="#1E3A5F" />
+      <rect x="69" y="116" width="4" height="20" fill="#0B1728" />
+      <rect x="77" y="116" width="4" height="20" fill="#0B1728" />
+      <text x="75" y="152" textAnchor="middle" fontSize="9" fill="#0B1728" fontFamily="ui-sans-serif,system-ui">undergrad</text>
+      <rect x="38" y="20" width="74" height="30" rx="6" fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1" />
+      <text x="75" y="40" textAnchor="middle" fontSize="13" fill="#1E3A5F" fontFamily="ui-sans-serif,system-ui" fontWeight="700">35.9%</text>
+      {/* Right — intern */}
+      <circle cx="225" cy="70" r="14" fill="#1E3A5F" />
+      <rect x="213" y="84" width="24" height="32" fill="#FAF7F2" stroke="#1E3A5F" strokeWidth="1" />
+      <rect x="219" y="116" width="4" height="20" fill="#0B1728" />
+      <rect x="227" y="116" width="4" height="20" fill="#0B1728" />
+      <text x="225" y="152" textAnchor="middle" fontSize="9" fill="#0B1728" fontFamily="ui-sans-serif,system-ui">intern</text>
+      <rect x="188" y="20" width="74" height="30" rx="6" fill="#C26A3D" />
+      <text x="225" y="40" textAnchor="middle" fontSize="13" fill="#FAF7F2" fontFamily="ui-sans-serif,system-ui" fontWeight="700">51.6%</text>
+      <line x1="112" y1="35" x2="188" y2="35" stroke="#0B1728" strokeWidth="1" strokeDasharray="2,2" />
+      <text x="150" y="32" textAnchor="middle" fontSize="10" fill="#0B1728" fontFamily="ui-sans-serif,system-ui" fontStyle="italic">p = 0.03</text>
+      <text x="150" y="180" textAnchor="middle" fontSize="9" fill="#0B1728" fontFamily="ui-sans-serif,system-ui">aware of MMI interactions</text>
+    </g>
+  ),
+
+  database: (
+    <g>
+      <rect x="30" y="30" width="240" height="140" rx="6" fill="#FAF7F2" stroke="#1E3A5F" strokeWidth="1.5" />
+      <rect x="30" y="30" width="240" height="22" rx="6" fill="#1E3A5F" />
+      <rect x="30" y="45" width="240" height="7" fill="#1E3A5F" />
+      <circle cx="42" cy="41" r="3" fill="#c62828" />
+      <circle cx="52" cy="41" r="3" fill="#ff8f00" />
+      <circle cx="62" cy="41" r="3" fill="#2e7d32" />
+      <text x="150" y="45" textAnchor="middle" fontSize="9" fill="#FAF7F2" fontFamily="ui-sans-serif,system-ui">Open Payments · MY</text>
+      <rect x="44" y="62" width="212" height="18" rx="9" fill="#F3E4D8" stroke="#1E3A5F" strokeWidth="1" />
+      <circle cx="56" cy="71" r="4" fill="none" stroke="#1E3A5F" strokeWidth="1.2" />
+      <line x1="59" y1="74" x2="63" y2="78" stroke="#1E3A5F" strokeWidth="1.2" />
+      <text x="74" y="75" fontSize="8" fill="#9e9e9e" fontFamily="ui-sans-serif,system-ui">search physician name…</text>
+      <rect x="44" y="92" width="212" height="18" fill="#F3E4D8" />
+      <text x="50" y="104" fontSize="8" fill="#0B1728" fontFamily="ui-sans-serif,system-ui">Dr A. Kumar</text>
+      <text x="180" y="104" fontSize="8" fill="#C26A3D" fontFamily="ui-sans-serif,system-ui" fontWeight="600">RM 4,200 · 2024</text>
+      <rect x="44" y="114" width="212" height="18" fill="#FAF7F2" />
+      <text x="50" y="126" fontSize="8" fill="#0B1728" fontFamily="ui-sans-serif,system-ui">Dr S. Lim</text>
+      <text x="180" y="126" fontSize="8" fill="#C26A3D" fontFamily="ui-sans-serif,system-ui" fontWeight="600">RM 1,150 · 2024</text>
+      <rect x="44" y="136" width="212" height="18" fill="#F3E4D8" />
+      <text x="50" y="148" fontSize="8" fill="#0B1728" fontFamily="ui-sans-serif,system-ui">Dr N. Rahman</text>
+      <text x="180" y="148" fontSize="8" fill="#C26A3D" fontFamily="ui-sans-serif,system-ui" fontWeight="600">RM 8,600 · 2023</text>
+    </g>
+  ),
+
+  classroom: (
+    <g>
+      <rect x="80" y="30" width="140" height="60" rx="3" fill="#1E3A5F" />
+      <text x="150" y="55" textAnchor="middle" fontSize="10" fill="#FAF7F2" fontFamily="ui-sans-serif,system-ui" fontWeight="600">Physician–MMI Ethics</text>
+      <text x="150" y="70" textAnchor="middle" fontSize="8" fill="#F3E4D8" fontFamily="ui-sans-serif,system-ui">Week 6 · Role-play scenarios</text>
+      <text x="150" y="82" textAnchor="middle" fontSize="8" fill="#F3E4D8" fontFamily="ui-sans-serif,system-ui">MMA Code · disclosure · cases</text>
+      <circle cx="50" cy="120" r="8" fill="#C26A3D" />
+      <circle cx="90" cy="120" r="8" fill="#1E3A5F" />
+      <circle cx="130" cy="120" r="8" fill="#C26A3D" />
+      <circle cx="170" cy="120" r="8" fill="#1E3A5F" />
+      <circle cx="210" cy="120" r="8" fill="#C26A3D" />
+      <circle cx="250" cy="120" r="8" fill="#1E3A5F" />
+      <circle cx="50" cy="150" r="8" fill="#1E3A5F" />
+      <circle cx="90" cy="150" r="8" fill="#C26A3D" />
+      <circle cx="130" cy="150" r="8" fill="#1E3A5F" />
+      <circle cx="170" cy="150" r="8" fill="#C26A3D" />
+      <circle cx="210" cy="150" r="8" fill="#1E3A5F" />
+      <circle cx="250" cy="150" r="8" fill="#C26A3D" />
+      <circle cx="50" cy="180" r="8" fill="#C26A3D" />
+      <circle cx="90" cy="180" r="8" fill="#1E3A5F" />
+      <circle cx="130" cy="180" r="8" fill="#C26A3D" />
+      <circle cx="170" cy="180" r="8" fill="#1E3A5F" />
+      <circle cx="210" cy="180" r="8" fill="#C26A3D" />
+      <circle cx="250" cy="180" r="8" fill="#1E3A5F" />
+    </g>
   )
 };
 

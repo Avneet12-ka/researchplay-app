@@ -660,7 +660,183 @@ export const papers = [
         }
       ]
     }
-  }
+  },
+  {
+    id: 'mmi-perceptions',
+    title: 'Physician–Medical Manufacturing Industry Relationships',
+    subtitle: 'Perceptions of Malaysian medical students and interns',
+    authors: 'Kaur A, Singh S, Singh H',
+    journal: 'Natl Med J India 2024;37(1):46–9',
+    doi: '10.25259/NMJI_328_2023',
+    tagline: '215 students took a survey about pharma gifts. 40% knew doctors and industry work together. Only 6% knew there were rules. The gap between what is happening and what students recognise as an ethical question is where the curriculum has work to do.',
+
+    comic: {
+      panels: [
+        { title: 'The first time a rep walks in',       caption: 'A pharmaceutical representative arrives on the ward with pens, a pamphlet, and a tray of samples. A medical student watches the consultant accept them. No one explains what just happened.', svg: 'samples' },
+        { title: 'The rule book nobody opens',          caption: 'The Malaysian Medical Association’s 2019 Code of Professional Conduct tells doctors to avoid any inducement that might compromise professional judgment. Only 6% of students in this study had heard of it.', svg: 'rulebook' },
+        { title: 'Two hundred and fifteen responses',   caption: 'Medical students and interns/housemen at UTAR answered a survey — five yes/no awareness questions, 26 Likert-style items across acceptability, perceived harm, disclosure attitude, and distrust. Cronbach’s alpha 0.72.', svg: 'crowd' },
+        { title: 'Six, forty, eighty-four',             caption: '6% knew rules existed. 40% knew doctors and industry interact. 84% still thought free samples were a good way to learn about new drugs. Knowing what happens is not the same as recognising the ethical stake.', svg: 'stat' },
+        { title: 'Interns knew more. Women accepted more.', caption: 'Awareness was higher in interns/housemen (51.6%) than in undergraduates (35.9%), p = 0.03. Across gender, women were the only subgroup with significantly higher acceptability of these interactions (p = 0.01) — a reversal of findings from most prior literature.', svg: 'compare' },
+        { title: 'The US$200 threshold',                caption: '43% of respondents said gifts under US$200 were acceptable. The MMA rule isn’t a dollar amount — it’s whether the gift could reasonably be seen as influencing judgment. That’s a harder threshold to internalise than a price.', svg: 'scales' },
+        { title: 'Disclose, publicly',                  caption: '43% preferred a public online database as the disclosure method — the model of the US Open Payments registry. Malaysia has no equivalent. Whether to build one is a policy question the next generation of clinicians will be asked to weigh in on.', svg: 'database' },
+        { title: 'Where curriculum goes',               caption: 'The paper argues for course material on MMI interactions, role-play of industry scenarios, MMI conduct as a rated element in student evaluations, and institutional guidelines that make the conflict-of-interest conversation part of clinical training, not an optional aside.', svg: 'classroom' }
+      ]
+    },
+
+    slides: [
+      { kind: 'title', eyebrow: 'Slide 1 of 10', title: 'Do students see the ethics of pharma gifts?', body: 'Most Malaysian medical students will meet the medical manufacturing industry before they ever write a prescription. This paper asks whether they have been taught to recognise what those meetings mean.' },
+      { kind: 'text', eyebrow: 'Slide 2 of 10 — Background', title: 'Why this matters', body: 'Physician–industry relationships range from conference registration fees and travel reimbursement to free drug samples and company-owned stock. Evidence from the US opioid crisis and a decade of prescribing-behaviour studies links these interactions to downstream prescribing patterns. The Malaysian Medical Association’s 2019 Code of Professional Conduct formally names this as a conflict of interest. Whether the next generation of doctors recognises it is an open question.' },
+      { kind: 'text', eyebrow: 'Slide 3 of 10 — The gap in the literature', title: 'Most prior work studied residents. This one starts earlier.', body: 'Systematic reviews of medical-student attitudes toward the pharmaceutical industry have documented exposure but not consistently measured ethical awareness. Data from Malaysian undergraduates specifically is almost absent. The study reported here is a single-institution survey, but it fills a particular descriptive gap.' },
+      { kind: 'text', eyebrow: 'Slide 4 of 10 — Design', title: '215 students, 33 questions, one institution', body: 'A cross-sectional questionnaire administered via Google Forms to 215 medical students and interns at UTAR (Sungai Long, Selangor). Five yes/no awareness items, 26 Likert-scale items covering acceptability, perceived negative effects, attitude toward disclosure, and distrust, plus two disclosure-method questions. Internal consistency: Cronbach’s α = 0.723. Ethics approval: UTAR SERC.' },
+      {
+        kind: 'chart', eyebrow: 'Slide 5 of 10 — The awareness headline', title: 'What students know, vs what students think is fine',
+        body: 'Three numbers anchor this paper. 40% know the relationship exists. 6% know rules exist. 84% still endorse free samples as an educational tool. The shape of the gap is visible in the bars.',
+        chart: { kind: 'bars', unit: '%', max: 100, bars: [
+          { label: 'Knew doctors & industry interact', value: 40, color: '#1E3A5F' },
+          { label: 'Knew MMA rules on gifts exist', value: 6, color: '#c62828' },
+          { label: 'Felt prepared to interact with MMI', value: 7, color: '#c62828' },
+          { label: 'Endorsed free samples as education', value: 84, color: '#C26A3D' },
+          { label: 'Said doctors shouldn’t accept MMI gifts', value: 21, color: '#9e9e9e' }
+        ] }
+      },
+      { kind: 'text', eyebrow: 'Slide 6 of 10 — The paradox', title: 'Aware of the relationship, not of the stake', body: 'The same respondents who recognise that doctors and industry interact also overwhelmingly approve of the interactions’ most visible form. 78% deemed industry funding of educational programmes satisfactory. 30% considered personal use of free drug samples acceptable — a practice the MMA explicitly prohibits. Descriptive knowledge and ethical knowledge are not moving together.' },
+      {
+        kind: 'cohortChart', eyebrow: 'Slide 7 of 10 — Subgroup differences', title: 'Awareness and acceptability by training stage and gender',
+        body: 'Awareness rose meaningfully between undergraduates and interns/housemen, consistent with on-the-job exposure. The gender split is the surprising finding: in this cohort, women showed significantly higher acceptability of physician–industry interactions, reversing the pattern reported in most US and European studies.',
+        cohorts: {
+          'By training stage': { note: 'Awareness of MMI-related activities, by year of training', bars: [
+            { label: 'Undergraduates — aware', value: 35.9, color: '#1E3A5F' },
+            { label: 'Undergraduates — unaware', value: 64.1, color: '#9e9e9e' },
+            { label: 'Interns/housemen — aware', value: 51.6, color: '#1E3A5F' },
+            { label: 'Interns/housemen — unaware', value: 48.4, color: '#9e9e9e' }
+          ] },
+          'By prior exposure': { note: 'Prior participation in MMI-related activities (samples, gifts, meals, talks)', bars: [
+            { label: 'Undergraduates — exposed', value: 30.1, color: '#1E3A5F' },
+            { label: 'Undergraduates — not exposed', value: 69.9, color: '#9e9e9e' },
+            { label: 'Interns/housemen — exposed', value: 62.9, color: '#1E3A5F' },
+            { label: 'Interns/housemen — not exposed', value: 37.1, color: '#9e9e9e' }
+          ] },
+          'By preferred disclosure': { note: 'Student-preferred method of disclosing physician–MMI financial ties', bars: [
+            { label: 'Public online database', value: 43, color: '#1E3A5F' },
+            { label: 'Hospital or institution only', value: 27, color: '#455a64' },
+            { label: 'At point of prescription', value: 18, color: '#455a64' },
+            { label: 'No disclosure needed', value: 12, color: '#c62828' }
+          ] }
+        }, max: 100
+      },
+      { kind: 'text', eyebrow: 'Slide 8 of 10 — What students ask for', title: 'Disclosure via a public registry', body: '43% — the largest single group — preferred a public online database. The closest international analogue is the US Open Payments registry, which has been associated with lower brand-name prescribing and higher clinician awareness of conflicts. Malaysia has no equivalent. The student preference is, in effect, an institutional ask.' },
+      { kind: 'headline', eyebrow: 'Slide 9 of 10 — The thesis', title: 'The curriculum is downstream of clinical habits', body: 'Students accept what they see practised around them. If the consultants accept samples, the students will. The authors argue that waiting for learners to notice the ethics on their own is a pedagogical failure. The intervention belongs upstream of clinical rotation.' },
+      { kind: 'text', eyebrow: 'Slide 10 of 10 — What next', title: 'Five concrete curricular changes', body: 'The paper recommends: (i) dedicated course material on MMI interactions with role-played scenarios; (ii) MMI conduct as a rated element in student evaluations; (iii) any MMI engagement with students to be faculty-chaperoned and structured as a teaching session; (iv) published institutional policy on MMI dealings; (v) transparent institutional-level disclosure of MMI ties. The survey is the baseline. The curriculum is the intervention.' }
+    ],
+
+    paper: {
+      glossary: {
+        'MMI': 'Medical manufacturing industry. Pharmaceutical, device, and diagnostics companies that interact with physicians through samples, sponsored education, consulting, and gifts.',
+        'MMA': 'Malaysian Medical Association. The professional body whose 2015/2019 Code of Professional Conduct names the rules governing physician–industry relationships in Malaysia.',
+        'conflict of interest': 'A situation in which a secondary interest (financial, reputational, personal) could unduly influence a primary professional judgment. The existence of a conflict is not the same as wrongdoing — the test is whether it could reasonably be perceived to compromise judgment.',
+        'Likert scale': 'An ordinal response scale where respondents mark agreement on a graded continuum — here, 1 = strongly disagree to 5 = strongly agree. Commonly analysed with means and non-parametric tests.',
+        'Cronbach’s alpha': 'A measure of internal consistency — whether items on a questionnaire move together. Values above 0.7 are generally considered acceptable for survey research.',
+        'chi-square test': 'A statistical test of whether two categorical variables (here, demographic characteristics vs awareness) are associated more than chance alone would produce.',
+        'Open Payments': 'A US federal registry, mandated by the Physician Payments Sunshine Act, that makes industry payments to physicians publicly searchable by name. Malaysia has no equivalent.',
+        'disclosure': 'The act of making a relationship visible to a relevant audience — patients, peers, the institution, or the public. The unit of disclosure (individual physician vs institution) is itself a policy choice.',
+        'hidden curriculum': 'The norms, values, and expectations transmitted through routine clinical practice rather than formal teaching. What students see attendings do carries more weight than what they are told.',
+        'pragmatic trial': 'A study design that tests an intervention under routine conditions rather than idealised ones. Cited here as the evidence standard for prescribing-behaviour studies.'
+      },
+      marginNotes: {
+        'abstract-gap': 'What this sentence actually claims: not that students approve of pharma gifts, but that they recognise the interaction exists without recognising it as an ethical question. The gap is the finding.',
+        'results-gender': 'What this sentence actually claims: this cohort’s gender finding reverses most international data. The authors flag it as a finding to replicate, not to generalise. Single-institution, n = 215.',
+        'discussion-curriculum': 'What this sentence actually claims: the proposed interventions are evidence-informed (Farah & Bilszta 2022 lecture-based intervention; Wofford & Ohl 2005 workshop design), but none has been deployed in a Malaysian undergraduate programme at scale. The recommendation is structural, not yet empirical.'
+      },
+      sections: [
+        {
+          heading: 'Abstract',
+          paragraphs: [
+            { id: 'abstract-1', text: [
+              'Background. Physicians and the ',
+              { term: 'MMI', text: 'medical manufacturing industry (MMI)' },
+              ' are closely associated and may have some form of financial or business arrangement. Research has highlighted that these interactions negatively impact physicians’ prescribing behaviour. We explored medical students’ perspectives regarding these interactions.'
+            ] },
+            { id: 'abstract-methods', text: [
+              'Methods. A questionnaire-based survey (215 respondents) captured demographic information and included five yes/no awareness questions, 26 ',
+              { term: 'Likert scale', text: 'Likert-style items' },
+              ', and two disclosure-method questions. Internal consistency was assessed with ',
+              { term: 'Cronbach’s alpha', text: 'Cronbach’s alpha' },
+              ' (0.72). Associations between independent variables and awareness were tested using the ',
+              { term: 'chi-square test', text: 'chi-square test' },
+              '.'
+            ] },
+            { id: 'abstract-gap', marginNote: 'abstract-gap', text: [
+              'Results. About 40% of students knew that doctors and MMI work together, but only 6% knew there were rules about accepting gifts from MMI. Eighty-four per cent of respondents felt free samples from MMI were an excellent way to learn about new products. Awareness was higher in interns/housemen (51.6%) than in medical students (35.9%). Most participants (43%) preferred an online database as a method of ',
+              { term: 'disclosure', text: 'disclosure' },
+              '.'
+            ] },
+            { id: 'abstract-conclusion', text: [
+              'Conclusions. Findings indicated students’ knowledge gaps regarding ethical considerations and the recommended guidelines governing physician–MMI relationships. Students should be taught appropriate conduct and best practices and must develop skepticism toward MMI marketing claims.'
+            ] }
+          ]
+        },
+        {
+          heading: 'Results — Awareness and exposure',
+          paragraphs: [
+            { id: 'results-1', text: ['Of the 215 respondents, only 13 (6%) had heard of any rules governing the acceptance of gifts from MMI, although 86 (40%) were aware that doctors and industry interact. Only 15 (7%) reported feeling prepared to communicate with MMI staff during training. Eighty-six (40%) had already participated in MMI-related events such as free medicine samples, gifts, meals, and presentations.'] },
+            { id: 'results-training', text: ['Only year of training was substantially related to MMI-related awareness and exposure. Awareness was more prevalent among interns/housemen (51.6%) than medical students (35.9%) — a statistically significant difference (p = 0.03). Prior exposure was also more prevalent among interns/housemen (62.9%) than undergraduates (30.1%), p < 0.001.'] }
+          ]
+        },
+        {
+          heading: 'Results — Acceptability and disclosure',
+          paragraphs: [
+            { id: 'results-gender', marginNote: 'results-gender', text: [
+              'Approximately 43% of respondents chose less than US$200 as an acceptable value of gifts from MMI to physicians. 43% preferred a public online database as the method of ',
+              { term: 'disclosure', text: 'disclosure' },
+              '. Among independent variables, only gender showed significant association with acceptability (p = 0.01), with women more accepting of these interactions — a reversal of findings from prior US and European literature (Wazana 2000; Pham-Kanter 2012).'
+            ] },
+            { id: 'results-samples', text: ['84% considered free samples from MMI an excellent way to learn about new products. 78% deemed industry funding of educational programmes and fellowships satisfactory. Only 21% agreed that physicians should not receive gifts from MMI. Approximately 30% considered personal use of free drug samples acceptable — a practice explicitly prohibited by the MMA code.'] }
+          ]
+        },
+        {
+          heading: 'Discussion — The gap between awareness and ethics',
+          paragraphs: [
+            { id: 'discussion-gap', text: ['There was a consistent disparity between students’ knowledge of physician–industry interactions and their acknowledgement of the ethical issues raised by those interactions. Despite awareness of the relationship, the majority of students did not recognise the relationship as carrying an ethical stake. Prior literature (Steinman et al. 2001; Keim et al. 1993; Austad et al. 2011 systematic review) has documented the same disjunction in residents and trainees elsewhere; the present data extend the observation to the Malaysian undergraduate population.'] },
+            { id: 'discussion-curriculum', marginNote: 'discussion-curriculum', text: [
+              'The ',
+              { term: 'hidden curriculum', text: 'hidden curriculum' },
+              ' — what students see practised on the wards — appears to be teaching acceptance faster than formal ethics instruction is teaching skepticism. Educational interventions specifically designed for this gap (Farah & Bilszta 2022; Wofford & Ohl 2005) have demonstrated improvement in students’ ability to resist pharmaceutical marketing. The recommendation here is to make such training part of the core curriculum rather than an optional adjunct.'
+            ] }
+          ]
+        }
+      ]
+    },
+
+    governance: {
+      intro: 'ResearchPlay’s governance layer isn’t written by the authors. It’s written by the reader, for their institution. The four lenses below are reusable. The content is specific to this paper.',
+      cards: [
+        {
+          id: 'mmi-reps-on-wards',
+          title: 'Should our medical school restrict MMI access to students on clinical rotations?',
+          context: 'Your curriculum committee is asked whether pharmaceutical representatives should continue to be allowed on wards and in clinic sessions where medical students are present, and whether chaperoned teaching sessions should replace informal rep visits.',
+          lenses: [
+            { lens: 'Institutional policy', body: 'A blanket ban is defensible but hard to operationalise in affiliated private clinics where students rotate. A graduated policy — reps allowed only in faculty-chaperoned teaching sessions with a published agenda — preserves the educational value the study’s respondents believe they gain from samples and talks, while making the interaction visible and accountable.' },
+            { lens: 'Regulatory', body: 'The MMA 2019 Code already prohibits pecuniary inducements that may compromise judgment, but enforcement at the medical-school level sits with individual institutions. A formal policy with documented sanctions is the minimum step needed to move from norm to rule. The Malaysian Medical Council could be asked to issue institutional guidance parallel to the physician code.' },
+            { lens: 'Ethics', body: 'Students cannot opt out of the hidden curriculum. If the consultant accepts samples, the student learns that samples are acceptable — regardless of what the formal ethics module teaches. The ethical case for chaperoning is not to protect students from reps; it is to protect the signal value of what faculty model.' },
+            { lens: 'Equity', body: 'MMI sponsorship disproportionately funds educational activities in resource-constrained settings, including parts of Malaysian clinical training. A restriction without a replacement funding stream may widen the gap between well-resourced and community-affiliated teaching sites. Any policy change should name its budget offset.' }
+          ],
+          prompt: 'If a curriculum committee restricts MMI access and the institution cannot backfill the sponsored CPD programmes the reps used to fund, who pays, and how does that decision get made transparently?'
+        },
+        {
+          id: 'open-payments-malaysia',
+          title: 'Should Malaysia create a public Open Payments-style registry?',
+          context: 'A Ministry of Health working group is considering whether to mandate public disclosure of financial relationships between Malaysian physicians and the medical manufacturing industry — modelled on the US Physician Payments Sunshine Act and Open Payments database.',
+          lenses: [
+            { lens: 'Institutional policy', body: 'The student preference (43% chose a public online database) is a data point in favour, but institutional readiness is the bottleneck. A phased approach — institution-level aggregated disclosure first, individual physician-level disclosure second — gives hospitals and MMA time to build reporting infrastructure before individual clinicians face a new compliance burden.' },
+            { lens: 'Regulatory', body: 'A registry would require new statutory authority (MMA alone cannot compel industry reporting) plus an enforcement agency equivalent to the US Centers for Medicare and Medicaid Services. Counsel should map the minimum legislative footprint, and the Personal Data Protection Act implications for publishing physician-identified payment records.' },
+            { lens: 'Ethics', body: 'Disclosure shifts the ethical centre of gravity from the individual physician to the institution. Published evidence (Licurse et al. 2010 systematic review) associates disclosure with lower rates of brand-name prescribing. But disclosure is not absolution — it does not resolve the underlying conflict, it only makes it visible to patients who have the literacy and time to check.' },
+            { lens: 'Equity', body: 'A registry that only patients with English literacy and internet access can use will disclose to some and not others. If Malaysia proceeds, the registry should be multilingual (BM, English, Mandarin, Tamil), SMS-accessible, and actively integrated into clinical decision points rather than sitting as a passive website.' }
+          ],
+          prompt: 'If an Open Payments-style registry is built in Malaysia, and a patient chooses a different specialist because of what they read there, is that the registry working as intended — or is that an unpriced consequence we haven’t thought through?'
+        }
+      ]
+    }
+  },
 ];
 
 export function getPaper(id) {
