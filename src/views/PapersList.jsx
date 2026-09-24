@@ -1,16 +1,23 @@
+import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
+  Alert,
   Box,
   Button,
   Chip,
+  CircularProgress,
   Container,
   Grid,
+  Link,
   Paper,
-  Typography
+  Typography,
 } from '@mui/material';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import { papers as seedPapers } from '../data/papers';
+import { supabase, supabaseConfigured } from '../supabaseClient';
+import { setPapers } from '../store/papersSlice';
 
 function InteractiveCard({ paper }) {
   return (
@@ -41,24 +48,70 @@ function InteractiveCard({ paper }) {
 }
 
 function UploadedCard({ paper }) {
+  const uploaded = paper.uploaded_at || paper.uploadDate;
   return (
-    <Paper elevation={1} sx={{ p: 3, height: '100%' }}>
-      <Chip label="Uploaded" size="small" sx={{ backgroundColor: '#eceff1', color: '#455a64' }} />
+    <Paper elevation={1} sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
+      <Chip label="Uploaded" size="small" sx={{ alignSelf: 'flex-start', backgroundColor: '#eceff1', color: '#455a64' }} />
       <Typography variant="h6" sx={{ mt: 1.5, color: '#263238' }}>
         {paper.title}
       </Typography>
       <Typography variant="body2" sx={{ color: '#607d8b', mt: 0.5 }}>
-        {paper.uploadDate ? `Uploaded ${new Date(paper.uploadDate).toLocaleDateString()}` : ''}
+        {uploaded ? `Uploaded ${new Date(uploaded).toLocaleDateString()}` : ''}
+        {paper.file_name ? ` · ${paper.file_name}` : ''}
       </Typography>
-      <Typography variant="body2" sx={{ color: '#78909c', mt: 2, fontStyle: 'italic' }}>
+      <Typography variant="body2" sx={{ color: '#78909c', mt: 2, mb: 2, fontStyle: 'italic', flexGrow: 1 }}>
         No interactive layers yet — convert this paper via the studio (coming soon).
       </Typography>
+      {paper.file_url && (
+        <Button
+          component={Link}
+          href={paper.file_url}
+          target="_blank"
+          rel="noopener"
+          variant="outlined"
+          startIcon={<PictureAsPdfIcon />}
+          sx={{ alignSelf: 'flex-start' }}
+        >
+          Open PDF
+        </Button>
+      )}
     </Paper>
   );
 }
 
 export default function PapersList() {
+  const dispatch = useDispatch();
   const uploaded = useSelector((s) => s.papers.papers);
+  const [loading, setLoading] = useState(false);
+  const [fetchError, setFetchError] = useState(null);
+
+  useEffect(() => {
+    if (!supabaseConfigured) return;
+    let cancelled = false;
+
+    async function fetchPapers() {
+      setLoading(true);
+      setFetchError(null);
+      const { data, error } = await supabase
+        .from('papers')
+        .select('*')
+        .order('uploaded_at', { ascending: false });
+
+      if (cancelled) return;
+      if (error) {
+        console.error('Failed to fetch papers:', error);
+        setFetchError(error.message);
+      } else {
+        dispatch(setPapers(data || []));
+      }
+      setLoading(false);
+    }
+
+    fetchPapers();
+    return () => {
+      cancelled = true;
+    };
+  }, [dispatch]);
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 6 }}>
@@ -83,11 +136,27 @@ export default function PapersList() {
         </Grid>
       </Box>
 
-      {uploaded.length > 0 && (
-        <Box>
-          <Typography variant="overline" sx={{ color: '#607d8b', letterSpacing: '0.14em', fontWeight: 700 }}>
-            Your uploads
+      <Box>
+        <Typography variant="overline" sx={{ color: '#607d8b', letterSpacing: '0.14em', fontWeight: 700 }}>
+          Your uploads
+        </Typography>
+        {loading && (
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mt: 1.5 }}>
+            <CircularProgress size={18} />
+            <Typography variant="body2" sx={{ color: '#607d8b' }}>Loading uploaded papers…</Typography>
+          </Box>
+        )}
+        {fetchError && (
+          <Alert severity="error" sx={{ mt: 1.5 }}>
+            Could not load uploaded papers: {fetchError}
+          </Alert>
+        )}
+        {!loading && !fetchError && uploaded.length === 0 && (
+          <Typography variant="body2" sx={{ color: '#78909c', mt: 1.5, fontStyle: 'italic' }}>
+            No uploaded papers yet. Head to Upload to add one.
           </Typography>
+        )}
+        {uploaded.length > 0 && (
           <Grid container spacing={3} sx={{ mt: 0.5 }}>
             {uploaded.map((p) => (
               <Grid key={p.id} size={{ xs: 12, md: 6 }}>
@@ -95,8 +164,8 @@ export default function PapersList() {
               </Grid>
             ))}
           </Grid>
-        </Box>
-      )}
+        )}
+      </Box>
     </Container>
   );
 }
