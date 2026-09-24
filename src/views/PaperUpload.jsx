@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link as RouterLink } from 'react-router-dom';
 import {
   Container,
   Typography,
@@ -20,13 +21,14 @@ function stripExtension(name) {
 }
 
 function sanitizeForPath(name) {
-  return name.replace(/[^\w.\-]+/g, '_');
+  return name.replace(/[^\w.-]+/g, '_');
 }
 
 export default function PaperUpload() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState({ severity: null, message: '' });
+  const [lastUploadId, setLastUploadId] = useState(null);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth?.user);
 
@@ -53,6 +55,7 @@ export default function PaperUpload() {
 
     setUploading(true);
     setUploadStatus({ severity: null, message: '' });
+    setLastUploadId(null);
 
     const ownerId = user?.id || 'anon';
     const path = `${ownerId}/${Date.now()}-${sanitizeForPath(file.name)}`;
@@ -102,6 +105,7 @@ export default function PaperUpload() {
       }
 
       dispatch(addPaper(data[0]));
+      setLastUploadId(data[0].id);
       setUploadStatus({ severity: 'success', message: 'Paper uploaded successfully!' });
       setFile(null);
     } catch (err) {
@@ -146,7 +150,18 @@ export default function PaperUpload() {
           {file && <Typography variant="body1">Selected: {file.name}</Typography>}
           {uploading && <LinearProgress />}
           {uploadStatus.message && (
-            <Alert severity={uploadStatus.severity || 'info'}>{uploadStatus.message}</Alert>
+            <Alert
+              severity={uploadStatus.severity || 'info'}
+              action={
+                lastUploadId && (
+                  <Button component={RouterLink} to={`/studio/${lastUploadId}`} color="inherit" size="small">
+                    Build 4 layers
+                  </Button>
+                )
+              }
+            >
+              {uploadStatus.message}
+            </Alert>
           )}
           <Button
             variant="contained"

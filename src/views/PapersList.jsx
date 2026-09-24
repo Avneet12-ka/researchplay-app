@@ -15,14 +15,18 @@ import {
 } from '@mui/material';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import EditIcon from '@mui/icons-material/Edit';
 import { papers as seedPapers } from '../data/papers';
 import { supabase, supabaseConfigured } from '../supabaseClient';
 import { setPapers } from '../store/papersSlice';
 
-function InteractiveCard({ paper }) {
+function InteractiveCard({ paper, studioId }) {
   return (
     <Paper elevation={2} sx={{ p: 3, borderTop: '4px solid #1E3A5F', height: '100%', display: 'flex', flexDirection: 'column' }}>
-      <Chip label="4 layers" size="small" sx={{ alignSelf: 'flex-start', backgroundColor: '#F3E4D8', color: '#1E3A5F', fontWeight: 600 }} />
+      <Box sx={{ display: 'flex', gap: 1 }}>
+        <Chip label="4 layers" size="small" sx={{ backgroundColor: '#F3E4D8', color: '#1E3A5F', fontWeight: 600 }} />
+        {studioId && <Chip label="Uploaded" size="small" sx={{ backgroundColor: '#eceff1', color: '#455a64' }} />}
+      </Box>
       <Typography variant="h6" sx={{ fontFamily: 'Roboto Slab, serif', mt: 1.5, color: '#0B1728' }}>
         {paper.title}
       </Typography>
@@ -34,20 +38,21 @@ function InteractiveCard({ paper }) {
           {paper.tagline}
         </Typography>
       )}
-      <Button
-        component={RouterLink}
-        to={`/reader/${paper.id}`}
-        variant="contained"
-        startIcon={<AutoStoriesIcon />}
-        sx={{ mt: 2.5, alignSelf: 'flex-start' }}
-      >
-        Open reader
-      </Button>
+      <Box sx={{ display: 'flex', gap: 1, mt: 2.5 }}>
+        <Button component={RouterLink} to={`/reader/${paper.id}`} variant="contained" startIcon={<AutoStoriesIcon />}>
+          Open reader
+        </Button>
+        {studioId && (
+          <Button component={RouterLink} to={`/studio/${studioId}`} startIcon={<EditIcon />}>
+            Edit
+          </Button>
+        )}
+      </Box>
     </Paper>
   );
 }
 
-function UploadedCard({ paper }) {
+function UploadedCard({ paper, hasDraft }) {
   const uploaded = paper.uploaded_at || paper.uploadDate;
   return (
     <Paper elevation={1} sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
@@ -60,21 +65,20 @@ function UploadedCard({ paper }) {
         {paper.file_name ? ` · ${paper.file_name}` : ''}
       </Typography>
       <Typography variant="body2" sx={{ color: '#78909c', mt: 2, mb: 2, fontStyle: 'italic', flexGrow: 1 }}>
-        No interactive layers yet — convert this paper via the studio (coming soon).
+        {hasDraft
+          ? 'Draft in progress — publish it from the studio to open it in the 4-layer reader.'
+          : 'Read-only PDF for now. Build the four layers in the studio to make it interactive.'}
       </Typography>
-      {paper.file_url && (
-        <Button
-          component={Link}
-          href={paper.file_url}
-          target="_blank"
-          rel="noopener"
-          variant="outlined"
-          startIcon={<PictureAsPdfIcon />}
-          sx={{ alignSelf: 'flex-start' }}
-        >
-          Open PDF
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+        {paper.file_url && (
+          <Button component={Link} href={paper.file_url} target="_blank" rel="noopener" variant="outlined" startIcon={<PictureAsPdfIcon />}>
+            Open PDF
+          </Button>
+        )}
+        <Button component={RouterLink} to={`/studio/${paper.id}`} variant="contained" color="secondary" startIcon={<EditIcon />}>
+          {hasDraft ? 'Continue draft' : 'Build 4 layers'}
         </Button>
-      )}
+      </Box>
     </Paper>
   );
 }
@@ -84,6 +88,7 @@ export default function PapersList() {
   const uploaded = useSelector((s) => s.papers.papers);
   const [loading, setLoading] = useState(false);
   const [fetchError, setFetchError] = useState(null);
+  const [layers, setLayers] = useState({});
 
   useEffect(() => {
     if (!supabaseConfigured) return;
@@ -92,17 +97,24 @@ export default function PapersList() {
     async function fetchPapers() {
       setLoading(true);
       setFetchError(null);
-      const { data, error } = await supabase
-        .from('papers')
-        .select('*')
-        .order('uploaded_at', { ascending: false });
+      const [papersRes, layersRes] = await Promise.all([
+        supabase.from('papers').select('*').order('uploaded_at', { ascending: false }),
+        supabase
+          .from('paper_layers')
+          .select('paper_id, published, title:content->>title, journal:content->>journal, tagline:content->>tagline'),
+      ]);
 
       if (cancelled) return;
-      if (error) {
-        console.error('Failed to fetch papers:', error);
-        setFetchError(error.message);
+      if (papersRes.error) {
+        console.error('Failed to fetch papers:', papersRes.error);
+        setFetchError(papersRes.error.message);
       } else {
-        dispatch(setPapers(data || []));
+        dispatch(setPapers(papersRes.data || []));
+      }
+      if (layersRes.error) {
+        console.error('Failed to fetch paper layers:', layersRes.error);
+      } else {
+        setLayers(Object.fromEntries((layersRes.data || []).map((l) => [l.paper_id, l])));
       }
       setLoading(false);
     }
@@ -112,6 +124,9 @@ export default function PapersList() {
       cancelled = true;
     };
   }, [dispatch]);
+
+  const publishedUploads = uploaded.filter((p) => layers[p.id]?.published);
+  const pendingUploads = uploaded.filter((p) => !layers[p.id]?.published);
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 6 }}>
@@ -133,6 +148,17 @@ export default function PapersList() {
               <InteractiveCard paper={p} />
             </Grid>
           ))}
+          {publishedUploads.map((p) => {
+            const l = layers[p.id];
+            return (
+              <Grid key={`u-${p.id}`} size={{ xs: 12, md: 6 }}>
+                <InteractiveCard
+                  paper={{ id: String(p.id), title: l.title || p.title, journal: l.journal, tagline: l.tagline }}
+                  studioId={p.id}
+                />
+              </Grid>
+            );
+          })}
         </Grid>
       </Box>
 
@@ -151,16 +177,16 @@ export default function PapersList() {
             Could not load uploaded papers: {fetchError}
           </Alert>
         )}
-        {!loading && !fetchError && uploaded.length === 0 && (
+        {!loading && !fetchError && pendingUploads.length === 0 && (
           <Typography variant="body2" sx={{ color: '#78909c', mt: 1.5, fontStyle: 'italic' }}>
-            No uploaded papers yet. Head to Upload to add one.
+            {uploaded.length ? 'Every upload is published.' : 'No uploaded papers yet. Head to Upload to add one.'}
           </Typography>
         )}
-        {uploaded.length > 0 && (
+        {pendingUploads.length > 0 && (
           <Grid container spacing={3} sx={{ mt: 0.5 }}>
-            {uploaded.map((p) => (
+            {pendingUploads.map((p) => (
               <Grid key={p.id} size={{ xs: 12, md: 6 }}>
-                <UploadedCard paper={p} />
+                <UploadedCard paper={p} hasDraft={Boolean(layers[p.id])} />
               </Grid>
             ))}
           </Grid>

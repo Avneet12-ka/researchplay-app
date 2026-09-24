@@ -85,10 +85,10 @@ export default function GlossaryLayer({ paper }) {
                         backgroundColor: '#EDE5D7', borderRadius: '0 4px 4px 0'
                       }}
                     >
-                      <Typography variant="caption" sx={{ color: '#1E3A5F', fontWeight: 700 }}>
+                      <Typography component="span" variant="caption" sx={{ display: 'block', color: '#1E3A5F', fontWeight: 700 }}>
                         MARGIN NOTE
                       </Typography>
-                      <Typography variant="body2" sx={{ color: '#37474f', mt: 0.5 }}>
+                      <Typography component="span" variant="body2" sx={{ display: 'block', color: '#37474f', mt: 0.5 }}>
                         {paper.marginNotes[para.marginNote]}
                       </Typography>
                     </Box>

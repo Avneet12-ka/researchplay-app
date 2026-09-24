@@ -494,6 +494,8 @@ const ART = {
   )
 };
 
+export const ART_KEYS = Object.keys(ART);
+
 export default function ComicPanel({ panel, index }) {
   return (
     <Paper

@@ -12,6 +12,7 @@ import Dashboard from "./views/Dashboard";
 import PapersList from "./views/PapersList";
 import PaperUpload from "./views/PaperUpload";
 import PaperReader from "./views/PaperReader";
+import Studio from "./views/Studio";
 import Games from "./views/Games";
 import Login from "./views/Login";
 import Signup from "./views/Signup";
@@ -79,6 +80,7 @@ function AppContent() {
         <Route path="/upload" element={<PaperUpload />} />
         <Route path="/reader" element={<PaperReader />} />
         <Route path="/reader/:id" element={<PaperReader />} />
+        <Route path="/studio/:paperId" element={<Studio />} />
         <Route path="/games" element={<Games />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

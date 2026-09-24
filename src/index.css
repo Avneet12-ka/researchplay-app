@@ -13,4 +13,6 @@
 a { color: #1E3A5F; text-decoration: none; }
 a:hover { color: #14263F; }
 
+*, *::before, *::after { box-sizing: border-box; }
+
 body { margin: 0; min-width: 320px; min-height: 100vh; }
